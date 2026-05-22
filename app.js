@@ -237,6 +237,15 @@ const setLocalizedText = (element, englishValue) => {
   }
 };
 
+const syncLocalizedStats = () => {
+  document.querySelectorAll("[data-stat]").forEach((element) => {
+    const value = element.dataset.originalText || element.textContent.trim();
+    if (!value) return;
+    element.dataset.originalText = value;
+    element.textContent = formatLocalizedMetric(translated(value), currentLanguage);
+  });
+};
+
 const updateWhatsAppLinks = () => {
   const message = encodeURIComponent(whatsappMessages[currentLanguage]);
   document.querySelectorAll("[data-whatsapp-link]").forEach((link) => {
@@ -290,6 +299,7 @@ const applyLanguage = (language) => {
 
   updateYear();
   updateWhatsAppLinks();
+  syncLocalizedStats();
 };
 
 const syncHeader = () => {
