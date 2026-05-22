@@ -21,10 +21,14 @@ html {
 
 body {
   margin: 0;
-  font-family: "Inter", Arial, sans-serif;
+  font-family: "Inter", "Noto Sans Bengali", Arial, sans-serif;
   color: var(--ink);
   background: var(--white);
   line-height: 1.6;
+}
+
+body.is-bangla {
+  line-height: 1.72;
 }
 
 img {
@@ -76,7 +80,7 @@ a {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 26px;
+  gap: 20px;
   font-size: 0.94rem;
   font-weight: 700;
   color: #31425a;
@@ -96,6 +100,38 @@ a {
   color: var(--white) !important;
   background: var(--navy);
   box-shadow: 0 12px 26px rgba(30, 200, 255, 0.16);
+}
+
+.language-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  height: 38px;
+  padding: 3px;
+  border: 1px solid rgba(11, 31, 51, 0.14);
+  border-radius: 6px;
+  color: #31425a;
+  background: #F4F8FB;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.language-toggle span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  min-height: 30px;
+  padding: 0 9px;
+  border-radius: 5px;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.language-toggle span.is-active {
+  color: var(--white);
+  background: var(--navy);
 }
 
 .menu-toggle {
@@ -152,8 +188,8 @@ p {
 h1 {
   margin-bottom: 22px;
   color: var(--navy);
-  font-size: clamp(3rem, 7vw, 5.75rem);
-  line-height: 0.98;
+  font-size: clamp(3rem, 5vw, 4rem);
+  line-height: 1.06;
   letter-spacing: 0;
 }
 
@@ -231,6 +267,9 @@ h3 {
 
 .dashboard-shell {
   position: relative;
+  width: 100%;
+  max-width: 620px;
+  margin-left: auto;
   padding: 22px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 8px;
@@ -260,7 +299,7 @@ h3 {
 
 .kpi-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
   margin: 24px 0 16px;
 }
@@ -276,6 +315,7 @@ h3 {
 .kpi-card {
   padding: 18px;
   color: var(--white);
+  min-width: 0;
 }
 
 .kpi-card small,
@@ -289,6 +329,7 @@ h3 {
   display: block;
   margin: 8px 0;
   font-size: 1.75rem;
+  word-break: break-word;
 }
 
 .trend {
@@ -299,7 +340,7 @@ h3 {
 
 .analytics-panel {
   display: grid;
-  grid-template-columns: 1fr 0.9fr;
+  grid-template-columns: minmax(0, 1fr) minmax(190px, 0.9fr);
   gap: 18px;
   min-height: 310px;
   padding: 20px;
@@ -322,6 +363,7 @@ h3 {
   border-radius: 5px 5px 0 0;
   background: linear-gradient(180deg, var(--cyan-soft), var(--cyan));
   box-shadow: 0 0 18px rgba(30, 200, 255, 0.22);
+  transition: height 0.5s ease;
 }
 
 .workflow-stack {
@@ -564,7 +606,37 @@ h3 {
 .contact-methods {
   display: grid;
   gap: 12px;
-  margin-top: 30px;
+  margin-top: 22px;
+}
+
+.consultation-note {
+  display: inline-flex;
+  margin: 10px 0 18px;
+  padding: 10px 12px;
+  border: 1px solid rgba(30, 200, 255, 0.28);
+  border-radius: 6px;
+  color: var(--navy) !important;
+  background: rgba(30, 200, 255, 0.08);
+  font-weight: 800;
+}
+
+.whatsapp-hero-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 20px;
+  border-radius: 6px;
+  color: var(--white);
+  background: var(--navy);
+  font-weight: 900;
+  box-shadow: 0 16px 34px rgba(11, 31, 51, 0.2), 0 0 24px rgba(30, 200, 255, 0.16);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.whatsapp-hero-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px rgba(11, 31, 51, 0.24), 0 0 26px rgba(30, 200, 255, 0.2);
 }
 
 .contact-method {
@@ -677,9 +749,19 @@ textarea:focus {
     grid-template-columns: 1fr;
   }
 
+  h1 {
+    font-size: clamp(2.75rem, 6vw, 3rem);
+    line-height: 1.08;
+  }
+
   .hero {
     min-height: auto;
     padding-top: 50px;
+  }
+
+  .dashboard-shell {
+    max-width: 100%;
+    margin-left: 0;
   }
 
   .problem-grid,
@@ -711,6 +793,11 @@ textarea:focus {
   .menu-toggle {
     display: block;
   }
+
+  .language-toggle {
+    justify-content: center;
+    width: 100%;
+  }
 }
 
 @media (max-width: 680px) {
@@ -727,11 +814,28 @@ textarea:focus {
   }
 
   h1 {
-    font-size: clamp(2.7rem, 13vw, 4.2rem);
+    font-size: clamp(2.125rem, 10vw, 2.375rem);
+    line-height: 1.12;
+    margin-bottom: 18px;
+  }
+
+  h2 {
+    font-size: clamp(1.75rem, 8vw, 2.25rem);
+    line-height: 1.14;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
   }
 
   .hero-actions,
-  .btn {
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  .btn,
+  .whatsapp-hero-cta {
+    min-height: 52px;
     width: 100%;
   }
 
@@ -749,6 +853,7 @@ textarea:focus {
 
   .dashboard-shell {
     padding: 14px;
+    overflow: hidden;
   }
 
   .kpi-card strong {
@@ -757,6 +862,8 @@ textarea:focus {
 
   .chart-bars {
     min-height: 180px;
+    gap: 8px;
+    padding: 14px;
   }
 
   .nav-links {
@@ -764,6 +871,14 @@ textarea:focus {
   }
 
   .section {
-    padding: 64px 0;
+    padding: 56px 0;
+  }
+
+  .problem-card,
+  .solution-card,
+  .why-list article,
+  .timeline li,
+  .consultation-form {
+    padding: 22px;
   }
 }

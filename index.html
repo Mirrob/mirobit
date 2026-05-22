@@ -4,19 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MIROBIT | Business Automation & Operational Solutions</title>
-  <meta name="description" content="MIROBIT helps Bangladesh businesses automate operations, manage staff, track performance, and simplify workflows through modern digital solutions.">
-  <meta name="keywords" content="MIROBIT, business automation Bangladesh, operational systems, business dashboard, workflow automation, SME automation">
+  <meta name="description" content="MIROBIT helps Bangladesh SMEs automate operations, manage staff, track performance, improve inventory tracking, and simplify workflows with modern business dashboards.">
+  <meta name="description" lang="bn" content="MIROBIT বাংলাদেশের SME ব্যবসার জন্য স্টাফ ম্যানেজমেন্ট, ইনভেন্টরি ট্র্যাকিং, বিজনেস ড্যাশবোর্ড এবং WhatsApp অটোমেশন সল্যুশন তৈরি করে।">
+  <meta name="keywords" content="MIROBIT, business automation Bangladesh, staff management system Bangladesh, business dashboard Bangladesh, SME automation, inventory tracking, WhatsApp automation, operational systems, workflow automation">
   <meta name="author" content="MIROBIT">
   <meta name="theme-color" content="#0B1F33">
   <meta property="og:title" content="MIROBIT | Smart Systems for Modern Businesses">
-  <meta property="og:description" content="Business Automation & Operational Solutions for Bangladesh SMEs, offices, restaurants, warehouses, clinics, and e-commerce teams.">
+  <meta property="og:description" content="Business Automation & Operational Solutions for Bangladesh SMEs, restaurants, dealers, distributors, offices, warehouses, clinics, and e-commerce teams.">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mirrob.github.io/mirobit/">
   <meta property="og:image" content="assets/logo.png">
   <meta property="og:site_name" content="MIROBIT">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="bn_BD">
+  <link rel="canonical" href="https://mirrob.github.io/mirobit/">
   <link rel="icon" href="assets/favicon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Bengali:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -36,6 +41,10 @@
         <a href="#industries">Industries</a>
         <a href="#demo">Demo</a>
         <a href="#contact">Contact</a>
+        <button class="language-toggle" type="button" aria-label="Switch language" data-language-toggle>
+          <span data-lang-option="en">EN</span>
+          <span data-lang-option="bn">বাংলা</span>
+        </button>
         <a class="nav-cta" href="https://wa.me/8801700000000" target="_blank" rel="noopener">WhatsApp</a>
       </div>
     </nav>
@@ -47,7 +56,7 @@
         <div class="hero-copy reveal">
           <p class="eyebrow">Business Automation & Operational Solutions</p>
           <h1>Smart Systems for Modern Businesses</h1>
-          <p class="hero-subtitle">We help businesses automate operations, manage staff, track performance, and simplify workflows through modern digital solutions.</p>
+          <p class="hero-subtitle">We help Bangladesh SMEs automate operations, manage staff, track performance, and simplify workflows through modern digital solutions.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#contact">Book Consultation</a>
             <a class="btn btn-secondary" href="#solutions">View Solutions</a>
@@ -69,33 +78,33 @@
           <div class="kpi-grid">
             <article class="kpi-card">
               <small>Attendance</small>
-              <strong>94%</strong>
-              <span class="trend up">+8.4%</span>
+              <strong data-stat="attendance-value">94%</strong>
+              <span class="trend up" data-stat="attendance-label">+8.4%</span>
             </article>
             <article class="kpi-card">
               <small>Sales Tracked</small>
-              <strong>৳8.6L</strong>
-              <span class="trend up">Live</span>
+              <strong data-stat="sales-value">৳8.6L</strong>
+              <span class="trend up" data-stat="sales-label">Live</span>
             </article>
             <article class="kpi-card">
               <small>Follow-ups</small>
-              <strong>128</strong>
-              <span class="trend">Today</span>
+              <strong data-stat="followups-value">128</strong>
+              <span class="trend" data-stat="followups-label">Today</span>
             </article>
           </div>
           <div class="analytics-panel">
             <div class="chart-bars" aria-hidden="true">
-              <span style="height: 42%"></span>
-              <span style="height: 68%"></span>
-              <span style="height: 54%"></span>
-              <span style="height: 82%"></span>
-              <span style="height: 74%"></span>
-              <span style="height: 91%"></span>
+              <span style="height: 42%" data-chart-bar></span>
+              <span style="height: 68%" data-chart-bar></span>
+              <span style="height: 55%" data-chart-bar></span>
+              <span style="height: 79%" data-chart-bar></span>
+              <span style="height: 72%" data-chart-bar></span>
+              <span style="height: 88%" data-chart-bar></span>
             </div>
             <div class="workflow-stack">
-              <div><b>Lead captured</b><small>Facebook form synced</small></div>
-              <div><b>Auto assigned</b><small>Sales team notified</small></div>
-              <div><b>Manager view</b><small>Real-time status updated</small></div>
+              <div><b data-stat="lead-title">Lead captured</b><small data-stat="lead-value">Facebook form synced</small></div>
+              <div><b data-stat="assignment-title">Auto assigned</b><small data-stat="assignment-value">Sales team notified</small></div>
+              <div><b data-stat="manager-title">Manager view</b><small data-stat="manager-value">Real-time status updated</small></div>
             </div>
           </div>
         </div>
@@ -106,7 +115,7 @@
       <div class="container">
         <div class="section-heading reveal">
           <p class="eyebrow">Business problems we solve</p>
-          <h2>From daily manual work to visible, controlled operations.</h2>
+          <h2>From daily manual work to visible, controlled operations for Bangladesh SMEs.</h2>
         </div>
         <div class="problem-grid">
           <article class="problem-card reveal"><span>01</span><h3>Manual reporting</h3><p>Reports take hours to prepare and still miss important operational details.</p></article>
@@ -127,7 +136,7 @@
         </div>
         <div class="solution-grid">
           <article class="solution-card reveal"><div class="icon">A</div><h3>Staff Attendance & KPI Systems</h3><p>Track presence, daily tasks, team performance, and manager approvals from one structured system.</p></article>
-          <article class="solution-card reveal"><div class="icon">D</div><h3>Business Dashboards & Reports</h3><p>Turn sales, operations, staff, and inventory data into clear dashboards for faster decisions.</p></article>
+          <article class="solution-card reveal"><div class="icon">D</div><h3>Business Dashboards & Reports</h3><p>Turn sales, operations, staff, dealer, distributor, and inventory data into clear dashboards for faster decisions.</p></article>
           <article class="solution-card reveal"><div class="icon">I</div><h3>Inventory & Sales Tracking</h3><p>Monitor stock, sales, returns, low-stock alerts, and location-wise movement with reliable records.</p></article>
           <article class="solution-card reveal"><div class="icon">L</div><h3>WhatsApp/Facebook Lead Automation</h3><p>Capture leads, assign owners, send alerts, and maintain follow-up pipelines without manual chasing.</p></article>
           <article class="solution-card reveal"><div class="icon">AI</div><h3>AI Workflow Automation</h3><p>Use practical AI assistance for summaries, task routing, customer response drafts, and recurring operations.</p></article>
@@ -140,7 +149,7 @@
       <div class="container industry-grid">
         <div class="section-heading reveal">
           <p class="eyebrow">Industries</p>
-          <h2>Built for teams that need control, visibility, and repeatable workflows.</h2>
+          <h2>Built for Bangladesh teams that need control, visibility, and repeatable workflows.</h2>
         </div>
         <div class="industry-list reveal">
           <span>Restaurants</span>
@@ -221,6 +230,8 @@
           <p class="eyebrow">Contact</p>
           <h2>Ready to modernize your operations?</h2>
           <p>Share your current process and we will help identify where automation, dashboards, and workflow systems can create immediate value.</p>
+          <p class="consultation-note">Free initial consultation available.</p>
+          <a class="whatsapp-hero-cta" href="https://wa.me/8801700000000" target="_blank" rel="noopener">Chat on WhatsApp</a>
           <div class="contact-methods">
             <a class="contact-method" href="https://wa.me/8801700000000" target="_blank" rel="noopener"><strong>WhatsApp</strong><span>+880 1700-000000</span></a>
             <a class="contact-method" href="mailto:hello@mirobit.com"><strong>Email</strong><span>hello@mirobit.com</span></a>
