@@ -195,7 +195,50 @@ Object.assign(translations, {
   "All rights reserved.": "সর্বস্বত্ব সংরক্ষিত।"
 });
 
-const banglaDigits = { "0": "০", "1": "১", "2": "২", "3": "৩", "4": "৪", "5": "৫", "6": "৬", "7": "৭", "8": "৮", "9": "৯" };
+Object.assign(translations, {
+  "Packages": "প্যাকেজ",
+  "Website Design & Digital Presence": "ওয়েবসাইট ডিজাইন ও ডিজিটাল উপস্থিতি",
+  "We design clean, mobile-friendly business websites based on customer needs, budget, and future growth plans.": "গ্রাহকের প্রয়োজন, বাজেট ও ভবিষ্যৎ পরিকল্পনা অনুযায়ী আমরা সুন্দর, মোবাইল-ফ্রেন্ডলি ব্যবসায়িক ওয়েবসাইট তৈরি করি।",
+  "Starter Packages for Bangladesh Businesses": "বাংলাদেশি ব্যবসার জন্য শুরু করার প্যাকেজ",
+  "Choose a simple starting package, then we customize based on your business process.": "সহজ একটি প্যাকেজ দিয়ে শুরু করুন, তারপর আপনার ব্যবসার প্রক্রিয়া অনুযায়ী আমরা কাস্টমাইজ করি।",
+  "Starter Website": "স্টার্টার ওয়েবসাইট",
+  "Business Dashboard": "বিজনেস ড্যাশবোর্ড",
+  "Staff & Operations System": "স্টাফ ও অপারেশন সিস্টেম",
+  "Custom Automation": "কাস্টম অটোমেশন",
+  "Starting from:": "শুরু:",
+  "৳15,000": "৳১৫,০০০",
+  "৳25,000": "৳২৫,০০০",
+  "৳35,000": "৳৩৫,০০০",
+  "Discuss after consultation": "পরামর্শের পর নির্ধারণ",
+  "Best for:": "যাদের জন্য:",
+  "Small businesses, restaurants, shops, and personal brands": "ছোট ব্যবসা, রেস্টুরেন্ট, দোকান ও ব্যক্তিগত ব্র্যান্ড",
+  "Businesses that need sales, expense, inventory, or daily reporting": "বিক্রয়, খরচ, ইনভেন্টরি বা দৈনিক রিপোর্ট দরকার এমন ব্যবসা",
+  "Offices, agencies, warehouses, and growing teams": "অফিস, এজেন্সি, ওয়্যারহাউস ও বড় হতে থাকা টিম",
+  "Businesses with unique workflow, follow-up, inventory, or reporting needs": "বিশেষ ধরনের কাজের প্রক্রিয়া, ফলোআপ, ইনভেন্টরি বা রিপোর্টিং প্রয়োজন এমন ব্যবসা",
+  "Includes:": "অন্তর্ভুক্ত:",
+  "Mobile-friendly website": "মোবাইল-ফ্রেন্ডলি ওয়েবসাইট",
+  "Basic SEO setup": "বেসিক SEO সেটআপ",
+  "WhatsApp contact button": "WhatsApp যোগাযোগ বাটন",
+  "Google Maps/contact section": "Google Maps/যোগাযোগ সেকশন",
+  "Google Sheet or database-based dashboard": "Google Sheet বা ডাটাবেস ভিত্তিক ড্যাশবোর্ড",
+  "Sales and expense tracking": "বিক্রয় ও খরচ ট্র্যাকিং",
+  "Summary reports": "সামারি রিপোর্ট",
+  "Basic admin view": "বেসিক অ্যাডমিন ভিউ",
+  "Staff attendance tracking": "স্টাফ হাজিরা ট্র্যাকিং",
+  "KPI or performance reports": "KPI বা পারফরম্যান্স রিপোর্ট",
+  "Role-based admin view": "রোল অনুযায়ী অ্যাডমিন ভিউ",
+  "Workflow reminders": "কাজের রিমাইন্ডার",
+  "Process analysis": "কাজের প্রক্রিয়া বিশ্লেষণ",
+  "Custom workflow system": "কাস্টম ওয়ার্কফ্লো সিস্টেম",
+  "WhatsApp/Facebook follow-up support": "WhatsApp/Facebook ফলোআপ সাপোর্ট",
+  "Ongoing improvement option": "নিয়মিত উন্নয়নের সুযোগ",
+  "Request Consultation": "পরামর্শ নিন",
+  "Recommended": "প্রস্তাবিত",
+  "Final cost depends on features, workflow complexity, and support needs.": "ফিচার, কাজের জটিলতা ও সাপোর্টের প্রয়োজন অনুযায়ী চূড়ান্ত খরচ নির্ধারিত হবে।",
+  "MIROBIT helps restaurants, dealers, distributors, offices, warehouses, clinics, and e-commerce businesses in Bangladesh replace manual work with dashboards, staff systems, inventory tracking, reporting tools, workflow automation, and mobile-friendly business websites.": "MIROBIT বাংলাদেশের রেস্টুরেন্ট, ডিলার, ডিস্ট্রিবিউটর, অফিস, ওয়্যারহাউস, ক্লিনিক ও ই-কমার্স ব্যবসার জন্য ড্যাশবোর্ড, স্টাফ সিস্টেম, ইনভেন্টরি ট্র্যাকিং, রিপোর্টিং টুলস, কাজের অটোমেশন এবং মোবাইল-ফ্রেন্ডলি ব্যবসায়িক ওয়েবসাইট তৈরি করে।"
+});
+
+const banglaDigits = { "0": "\u09E6", "1": "\u09E7", "2": "\u09E8", "3": "\u09E9", "4": "\u09EA", "5": "\u09EB", "6": "\u09EC", "7": "\u09ED", "8": "\u09EE", "9": "\u09EF" };
 const toBanglaDigits = (value) => String(value).replace(/[0-9]/g, (digit) => banglaDigits[digit] || digit);
 const toBanglaNumber = toBanglaDigits;
 
@@ -294,7 +337,7 @@ const applyLanguage = (language) => {
   if (metaDescription) {
     metaDescription.content = currentLanguage === "bn"
       ? document.querySelector('meta[name="description"][lang="bn"]')?.content || metaDescription.content
-      : "MIROBIT provides business automation, staff management systems, dashboards, inventory tracking, reporting tools, and workflow automation solutions for Bangladesh SMEs.";
+      : "MIROBIT provides business automation, staff management systems, dashboards, inventory tracking, reporting tools, workflow automation, and affordable business website design for Bangladesh SMEs.";
   }
 
   updateYear();
