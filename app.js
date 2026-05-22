@@ -231,7 +231,7 @@ const setLocalizedText = (element, englishValue) => {
   if (!element || englishValue == null) return;
   const value = String(englishValue);
   element.dataset.originalText = value;
-  element.textContent = translated(value);
+  element.textContent = formatLocalizedMetric(translated(value), currentLanguage);
   if (element.firstChild?.nodeType === Node.TEXT_NODE) {
     element.firstChild.originalText = value;
   }
