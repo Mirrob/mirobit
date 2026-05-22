@@ -2,465 +2,257 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Favicon -->
-  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-  <!-- If using PNG format -->
-  <!-- <link rel="icon" href="images/favicon.png" type="image/png"> -->
-  <title>MIROBI IT Solutions</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Roboto', sans-serif;
-      background: linear-gradient(135deg, #3498db, #8e44ad, #2ecc71, #f39c12); /* Gradient background with multiple colors */
-      background-size: 400% 400%; /* Spread the gradient */
-      animation: gradientAnimation 10s ease infinite; /* Animation for the gradient */
-      color: #333;
-      transition: background 0.3s, color 0.3s;
-    }
-    body.dark-mode { background: #2c3e50; color: #ecf0f1; }
-    header {
-      background: rgba(52, 152, 219, 0.7); /* Semi-transparent header background */
-      color: white;
-      padding: 60px 0;
-      text-align: center;
-      border-bottom: 4px solid #8e44ad;
-      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
-    }
-    header img {
-      max-width: 160px;
-      height: auto;
-      margin-bottom: 25px;
-      border-radius: 50%;
-      border: 2px solid white;
-    }
-    header h1 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-      text-transform: uppercase;
-    }
-    header p {
-      font-size: 1.1rem;
-      font-weight: 400;
-      margin-bottom: 20px;
-    }
-    nav {
-      background: rgba(44, 62, 80, 0.8); /* Semi-transparent navigation bar */
-      text-align: center;
-      padding: 15px 0;
-      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    nav a {
-      color: black; /* Font color set to black */
-      font-weight: bold; /* Make font bold */
-      text-decoration: none;
-      margin: 0 15px; /* Reduced space between the links */
-      font-size: 1rem; /* Reduced font size */
-      letter-spacing: 1px;
-      padding: 15px; /* Smaller padding for a smaller circle */
-      border-radius: 50%;
-      background: #ffffff;
-      display: inline-block;
-      transition: color 0.3s ease, transform 0.3s ease, background 0.3s ease;
-    }
-    nav a:hover {
-      background: #3498db;
-      color: white;
-      transform: scale(1.05); /* Slightly enlarge on hover */
-    }
-    .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: 30px auto;
-    }
-    section {
-      background: rgba(255, 255, 255, 0.8); /* Slightly transparent sections */
-      padding: 35px;
-      border-radius: 12px;
-      margin-bottom: 30px;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-      animation: fadeIn 1s ease-out;
-    }
-    body.dark-mode section { background: rgba(52, 152, 219, 0.8); /* Dark theme for sections */ }
-    .team, .services {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-    }
-    .team-member, .service-box {
-      width: 260px;
-      background: #ecf0f1;
-      padding: 20px;
-      border-radius: 12px;
-      text-align: center;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .team-member:hover, .service-box:hover { 
-      transform: translateY(-10px); 
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); 
-    }
-    body.dark-mode .team-member, body.dark-mode .service-box { background: #7f8c8d; }
-    .team-member img, .service-box img {
-      width: 100%;
-      border-radius: 12px;
-      margin-bottom: 20px;
-      transition: transform 0.3s ease;
-    }
-    .team-member img:hover, .service-box img:hover {
-      transform: scale(1.05);
-    }
-    .team-member h4, .service-box h3 { 
-      margin-top: 12px; 
-      color: #3498db;
-      font-size: 1.3rem;
-      font-weight: 600;
-    }
-    .team-member p, .service-box p {
-      font-size: 1rem;
-      color: #666;
-    }
-    .social-icons a {
-      margin: 0 8px;
-      text-decoration: none;
-      font-size: 22px;
-      color: #3498db;
-      transition: color 0.3s ease;
-    }
-    .social-icons a:hover {
-      color: #8e44ad;
-    }
-    form { 
-      display: flex; 
-      flex-direction: column; 
-      margin-top: 25px; 
-    }
-    form label { 
-      margin: 12px 0 6px; 
-      font-weight: bold; 
-      color: #333;
-    }
-    form input, form textarea {
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-size: 1rem;
-      margin-bottom: 20px;
-    }
-    form button {
-      padding: 12px;
-      background: #3498db;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 1.1rem;
-      transition: background 0.3s ease, transform 0.3s ease;
-    }
-    form button:hover {
-      background: #2980b9;
-      transform: scale(1.05);
-    }
-    iframe {
-      width: 100%;
-      height: 350px;
-      border: 0;
-      border-radius: 8px;
-      margin-top: 20px;
-    }
-    .lang-toggle, .theme-toggle {
-      margin-top: 30px;
-      text-align: center;
-    }
-    .lang-toggle button, .theme-toggle button {
-      background: #3498db;
-      border: none;
-      padding: 12px 20px;
-      margin: 0 15px;
-      color: white;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 1.1rem;
-      transition: background 0.3s ease;
-    }
-    .lang-toggle button:hover, .theme-toggle button:hover {
-      background: #2980b9;
-    }
-    footer {
-      background: rgba(44, 62, 80, 0.8);
-      color: #ecf0f1;
-      padding: 20px 0;
-      text-align: center;
-      margin-top: 50px;
-      box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
-    }
-    footer p {
-      font-size: 1rem;
-    }
-    /* Animation for fade-in effect */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(50px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    /* Smooth scrolling */
-    html {
-      scroll-behavior: smooth;
-    }
-    /* Gradient Animation */
-    @keyframes gradientAnimation {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MIROBIT | Business Automation & Operational Solutions</title>
+  <meta name="description" content="MIROBIT helps Bangladesh businesses automate operations, manage staff, track performance, and simplify workflows through modern digital solutions.">
+  <meta name="keywords" content="MIROBIT, business automation Bangladesh, operational systems, business dashboard, workflow automation, SME automation">
+  <meta name="author" content="MIROBIT">
+  <meta name="theme-color" content="#0B1F33">
+  <meta property="og:title" content="MIROBIT | Smart Systems for Modern Businesses">
+  <meta property="og:description" content="Business Automation & Operational Solutions for Bangladesh SMEs, offices, restaurants, warehouses, clinics, and e-commerce teams.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/logo.png">
+  <meta property="og:site_name" content="MIROBIT">
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <img src="images/logo.png" alt="MIROBI IT Solutions Logo"> <!-- Your logo file -->
-    <h1 id="site-title">MIROB IT Solutions</h1>
-    <p id="site-description">Empowering Businesses with Innovative IT Services</p>
+  <header class="site-header" data-header>
+    <nav class="nav container" aria-label="Primary navigation">
+      <a class="brand" href="#home" aria-label="MIROBIT home">
+        <img src="assets/logo.png" alt="MIROBIT logo" width="182" height="52">
+      </a>
+      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" data-menu-toggle>
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="nav-links" data-nav-links>
+        <a href="#home">Home</a>
+        <a href="#solutions">Solutions</a>
+        <a href="#industries">Industries</a>
+        <a href="#demo">Demo</a>
+        <a href="#contact">Contact</a>
+        <a class="nav-cta" href="https://wa.me/8801700000000" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </nav>
   </header>
-  <nav>
-    <a href="#about" id="about-link">About</a>
-    <a href="#services" id="services-link">Services</a>
-    <a href="#team" id="team-link">Team</a>
-    <a href="#contact" id="contact-link">Contact</a>
-  </nav>
-  <div class="container">
-    <section id="about">
-      <h2 id="about-heading">About Us</h2>
-      <p id="about-description" style="text-align: justify;">
-        <strong>MIROB Solutions</strong> is a dynamic IT service company founded by 
-        <strong>Md Robiul Islam</strong> and <strong>Mir Abdullah Momin</strong>, driven by a shared vision to empower businesses through 
-        innovative and cost-effective technology solutions. With a strong understanding of the digital landscape, our mission is to deliver 
-        impactful, scalable, and affordable IT services that help businesses grow, streamline operations, and remain competitive in a rapidly evolving market.
-      </p>
-    </section>
-    <section id="services">
-      <h2 id="services-heading">Our Services</h2>
-      <div class="services">
-        <div class="service-box">
-          <img src="images/web-design.jpg" alt="Web Design">
-          <h3 id="web-design-title">Web Design</h3>
-          <p id="web-design-description">We create modern, responsive, and user-friendly websites that not only look stunning but are strategically built to drive engagement and achieve business goals.</p>
-        </div>
-        <div class="service-box">
-          <img src="images/data-entry.jpg" alt="Data Entry">
-          <h3 id="data-entry-title">Data Entry</h3>
-          <p id="data-entry-description">Our accurate and efficient data entry solutions support industries of all types, ensuring your business information is always organized, accessible, and secure.</p>
-        </div>
-        <div class="service-box">
-          <img src="images/bpo.jpg" alt="BPO">
-          <h3 id="bpo-title">BPO</h3>
-          <p id="bpo-description">We offer reliable outsourcing services with a highly skilled workforce, allowing you to reduce operational costs while maintaining high service quality.</p>
-        </div>
-        <div class="service-box">
-          <img src="images/advisory.jpg" alt="Advisory">
-          <h3 id="advisory-title">IT Consulting</h3>
-          <p id="advisory-description">Our expert consultants work with you to develop and implement IT strategies that enhance performance, streamline operations, and accelerate digital transformation.</p>
-        </div>
-      </div>
-    </section>
-    <section id="team">
-      <h2 id="team-heading">Meet Our Founders</h2>
-      <div class="team">
-        <div class="team-member">
-          <img src="images/robiul.jpg" alt="Md Robiul Islam">
-          <h4 id="robiul-name">Md Robiul Islam</h4>
-          <p id="robiul-position">Co-Founder & Technical Lead</p>
-          <div class="social-icons">
-  <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-  <a href="https://www.linkedin.com/in/md-robiul-islam-492507198"
-     target="_blank"
-     rel="noopener noreferrer"
-     aria-label="LinkedIn - Md Robiul Islam">
-    <i class="fab fa-linkedin-in"></i>
-  </a>
-</div>
-        </div>
-        <div class="team-member">
-          <img src="images/momin.jpg" alt="Mir Abdullah Momin">
-          <h4 id="momin-name">Mir Abdullah Momin</h4>
-          <p id="momin-position">Co-Founder & Operations Advisor</p>
-          <div class="social-icons">
-  <a href="https://www.facebook.com/antuoo7?mibextid=ZbWKwL"
-     target="_blank"
-     rel="noopener noreferrer"
-     aria-label="Facebook - Mir Abdullah Momin">
-    <i class="fab fa-facebook-f"></i>
-  </a>
-  <a href="https://www.linkedin.com/in/mir-abdullah-993026159"
-     target="_blank"
-     rel="noopener noreferrer"
-     aria-label="LinkedIn - Mir Abdullah Momin">
-    <i class="fab fa-linkedin-in"></i>
-  </a>
-</div>
 
+  <main>
+    <section class="hero section" id="home">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Business Automation & Operational Solutions</p>
+          <h1>Smart Systems for Modern Businesses</h1>
+          <p class="hero-subtitle">We help businesses automate operations, manage staff, track performance, and simplify workflows through modern digital solutions.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">Book Consultation</a>
+            <a class="btn btn-secondary" href="#solutions">View Solutions</a>
+          </div>
+          <div class="trust-row" aria-label="MIROBIT strengths">
+            <span>Bangladesh SME focused</span>
+            <span>Dashboard led</span>
+            <span>Workflow first</span>
+          </div>
         </div>
-      </div>
-    </section>
 
-    <!-- Our Team Section -->
-    <section id="team-members">
-      <h2 id="team-members-heading">Our Team</h2>
-      <div class="team">
-        <div class="team-member">
-          <img src="images/member1.jpg" alt="Team Member 1">
-          <h4 id="member1-name">Suhin Ahmad Rubel</h4>
-          <p id="member1-position">Web Designer</p>
-          <div class="social-icons">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <div class="dashboard-shell reveal" aria-label="Operational dashboard preview">
+          <div class="dashboard-topbar">
+            <span></span>
+            <span></span>
+            <span></span>
+            <strong>Operations Command</strong>
           </div>
-        </div>
-        <div class="team-member">
-          <img src="images/member2.jpg" alt="Team Member 2">
-          <h4 id="member2-name">Md Nazmul Hasan</h4>
-          <p id="member2-position">MIS Executive</p>
-          <div class="social-icons">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <div class="kpi-grid">
+            <article class="kpi-card">
+              <small>Attendance</small>
+              <strong>94%</strong>
+              <span class="trend up">+8.4%</span>
+            </article>
+            <article class="kpi-card">
+              <small>Sales Tracked</small>
+              <strong>৳8.6L</strong>
+              <span class="trend up">Live</span>
+            </article>
+            <article class="kpi-card">
+              <small>Follow-ups</small>
+              <strong>128</strong>
+              <span class="trend">Today</span>
+            </article>
           </div>
-        </div>
-        <div class="team-member">
-          <img src="images/member3.jpg" alt="Team Member 3">
-          <h4 id="member3-name">Aiman Mahmud</h4>
-          <p id="member3-position">BPO Lead</p>
-          <div class="social-icons">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-          </div>
-        </div>
-        <div class="team-member">
-          <img src="images/member4.jpg" alt="Team Member 4">
-          <h4 id="member4-name">Ehsan Kabir Abir</h4>
-          <p id="member4-position">Graphic Designer</p>
-          <div class="social-icons">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <div class="analytics-panel">
+            <div class="chart-bars" aria-hidden="true">
+              <span style="height: 42%"></span>
+              <span style="height: 68%"></span>
+              <span style="height: 54%"></span>
+              <span style="height: 82%"></span>
+              <span style="height: 74%"></span>
+              <span style="height: 91%"></span>
+            </div>
+            <div class="workflow-stack">
+              <div><b>Lead captured</b><small>Facebook form synced</small></div>
+              <div><b>Auto assigned</b><small>Sales team notified</small></div>
+              <div><b>Manager view</b><small>Real-time status updated</small></div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-   <section id="contact">
-  <h2 id="contact-heading">Contact Us</h2>
-  <p><strong>Office Address:</strong> Islamia College Rd, Kushtia City, Bangladesh</p>
-  <p><strong>Phone:</strong> +8801327224264</p>
-  <p><strong>Email:</strong> mirobitsolution@gmail.com </p>
-  <!-- Updated Google Maps iframe -->
-  <iframe src="https://www.google.com/maps?q=Islamia%20College%20Rd,%20Kushtia%20City,%20Bangladesh&output=embed" allowfullscreen></iframe>
-  <form id="contactForm" method="POST" action="https://script.google.com/macros/s/AKfycbxCo6alGk4HskLAW09zTPJ7BKlRP2byGLL0KbQ5XsHfBP54uh49yakeFzdE7AB4QEhL/exec">
-    <label for="name">Your Name</label>
-    <input type="text" id="name" name="name" required>
-    <label for="email">Your Email</label>
-    <input type="email" id="email" name="email" required>
-    <label for="message">Message</label>
-    <textarea id="message" name="message" rows="5" required></textarea>
-    <button type="submit">Send Message</button>
-  </form>
-  <p id="contactResponse"></p>
-  <div class="lang-toggle">
-    <button onclick="switchLang('bn')">বাংলা</button>
-    <button onclick="switchLang('en')">English</button>
-  </div>
-  <div class="theme-toggle">
-    <button onclick="toggleTheme()">Toggle Dark/Light Mode</button>
-  </div>
-</section>
+    <section class="section problem-section" id="problems">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Business problems we solve</p>
+          <h2>From daily manual work to visible, controlled operations.</h2>
+        </div>
+        <div class="problem-grid">
+          <article class="problem-card reveal"><span>01</span><h3>Manual reporting</h3><p>Reports take hours to prepare and still miss important operational details.</p></article>
+          <article class="problem-card reveal"><span>02</span><h3>Excel chaos</h3><p>Multiple sheets, duplicate entries, and outdated files make decisions slower.</p></article>
+          <article class="problem-card reveal"><span>03</span><h3>Staff mismanagement</h3><p>Attendance, performance, and accountability are hard to track consistently.</p></article>
+          <article class="problem-card reveal"><span>04</span><h3>No real-time business visibility</h3><p>Owners and managers cannot quickly see what is happening across the business.</p></article>
+          <article class="problem-card reveal"><span>05</span><h3>Inventory confusion</h3><p>Stock movement, sales, returns, and purchase decisions become unclear.</p></article>
+          <article class="problem-card reveal"><span>06</span><h3>Missed customer follow-ups</h3><p>Leads and customers get lost when reminders and assignments are manual.</p></article>
+        </div>
+      </div>
+    </section>
 
+    <section class="section" id="solutions">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Solutions</p>
+          <h2>Operational systems designed for how Bangladesh businesses actually work.</h2>
+        </div>
+        <div class="solution-grid">
+          <article class="solution-card reveal"><div class="icon">A</div><h3>Staff Attendance & KPI Systems</h3><p>Track presence, daily tasks, team performance, and manager approvals from one structured system.</p></article>
+          <article class="solution-card reveal"><div class="icon">D</div><h3>Business Dashboards & Reports</h3><p>Turn sales, operations, staff, and inventory data into clear dashboards for faster decisions.</p></article>
+          <article class="solution-card reveal"><div class="icon">I</div><h3>Inventory & Sales Tracking</h3><p>Monitor stock, sales, returns, low-stock alerts, and location-wise movement with reliable records.</p></article>
+          <article class="solution-card reveal"><div class="icon">L</div><h3>WhatsApp/Facebook Lead Automation</h3><p>Capture leads, assign owners, send alerts, and maintain follow-up pipelines without manual chasing.</p></article>
+          <article class="solution-card reveal"><div class="icon">AI</div><h3>AI Workflow Automation</h3><p>Use practical AI assistance for summaries, task routing, customer response drafts, and recurring operations.</p></article>
+          <article class="solution-card reveal"><div class="icon">S</div><h3>Custom Operational Systems</h3><p>Build role-based systems that match your business process instead of forcing your team into generic tools.</p></article>
+        </div>
+      </div>
+    </section>
 
-  </div>
-  <footer>
-    <p>&copy; 2025 MIROB IT Solutions. All rights reserved.</p>
+    <section class="section industries" id="industries">
+      <div class="container industry-grid">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Industries</p>
+          <h2>Built for teams that need control, visibility, and repeatable workflows.</h2>
+        </div>
+        <div class="industry-list reveal">
+          <span>Restaurants</span>
+          <span>Distributors & Dealers</span>
+          <span>Offices & Agencies</span>
+          <span>Warehouses</span>
+          <span>Clinics</span>
+          <span>E-commerce Businesses</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section demo-section" id="demo">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Demo systems</p>
+          <h2>Preview the type of systems MIROBIT can tailor for your operation.</h2>
+        </div>
+        <div class="demo-grid">
+          <article class="demo-card reveal">
+            <div class="mini-ui staff-ui" aria-hidden="true"><span></span><span></span><span></span><div></div></div>
+            <h3>Staff Management Dashboard</h3>
+            <p>Attendance, KPIs, tasks, approvals, and manager summaries in a single operational view.</p>
+            <a class="text-link" href="#contact">Request Demo</a>
+          </article>
+          <article class="demo-card reveal">
+            <div class="mini-ui sales-ui" aria-hidden="true"><span></span><span></span><span></span><div></div></div>
+            <h3>Restaurant Sales & Inventory Dashboard</h3>
+            <p>Daily sales, item performance, stock movement, purchase alerts, and branch-level reports.</p>
+            <a class="text-link" href="#contact">Request Demo</a>
+          </article>
+          <article class="demo-card reveal">
+            <div class="mini-ui lead-ui" aria-hidden="true"><span></span><span></span><span></span><div></div></div>
+            <h3>Lead Automation Workflow</h3>
+            <p>Lead capture, assignment, follow-up reminders, status tracking, and team accountability.</p>
+            <a class="text-link" href="#contact">Request Demo</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section why-section">
+      <div class="container why-grid">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Why MIROBIT</p>
+          <h2>Practical automation for real business operations.</h2>
+        </div>
+        <div class="why-list">
+          <article class="reveal"><h3>Practical business experience</h3><p>Solutions are shaped around daily operator, manager, and owner needs.</p></article>
+          <article class="reveal"><h3>Automation-first approach</h3><p>We remove repeated manual work before adding more screens.</p></article>
+          <article class="reveal"><h3>Affordable for SMEs</h3><p>Systems can start focused and grow as the business expands.</p></article>
+          <article class="reveal"><h3>Bangladesh business understanding</h3><p>Workflows consider local sales, staff, reporting, and communication habits.</p></article>
+          <article class="reveal"><h3>Scalable systems</h3><p>Role access, dashboards, and data structures are planned for growth.</p></article>
+          <article class="reveal"><h3>Operational efficiency focus</h3><p>Every feature is tied to faster work, better tracking, or clearer decisions.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section process-section">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Process</p>
+          <h2>A clear path from business problem to working system.</h2>
+        </div>
+        <ol class="timeline">
+          <li class="reveal"><span>01</span><h3>Understand Business</h3><p>We learn your teams, reports, tools, bottlenecks, and decision points.</p></li>
+          <li class="reveal"><span>02</span><h3>Map Workflow</h3><p>We define roles, data flow, approvals, automation points, and dashboard needs.</p></li>
+          <li class="reveal"><span>03</span><h3>Build System</h3><p>We create a practical solution focused on adoption and measurable outcomes.</p></li>
+          <li class="reveal"><span>04</span><h3>Train Team</h3><p>We help staff and managers use the system confidently from day one.</p></li>
+          <li class="reveal"><span>05</span><h3>Support & Improve</h3><p>We refine workflows as your business grows and new needs appear.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-copy reveal">
+          <p class="eyebrow">Contact</p>
+          <h2>Ready to modernize your operations?</h2>
+          <p>Share your current process and we will help identify where automation, dashboards, and workflow systems can create immediate value.</p>
+          <div class="contact-methods">
+            <a class="contact-method" href="https://wa.me/8801700000000" target="_blank" rel="noopener"><strong>WhatsApp</strong><span>+880 1700-000000</span></a>
+            <a class="contact-method" href="mailto:hello@mirobit.com"><strong>Email</strong><span>hello@mirobit.com</span></a>
+            <div class="contact-method"><strong>Office</strong><span>Dhaka, Bangladesh</span></div>
+          </div>
+        </div>
+        <form class="consultation-form reveal" aria-label="Consultation request form">
+          <label>Full name<input type="text" name="name" placeholder="Your name"></label>
+          <label>Business name<input type="text" name="business" placeholder="Company or shop name"></label>
+          <label>Phone or WhatsApp<input type="tel" name="phone" placeholder="+880"></label>
+          <label>What do you want to improve?<textarea name="message" rows="4" placeholder="Staff, inventory, sales, dashboard, lead follow-up..."></textarea></label>
+          <button class="btn btn-primary" type="button">Submit Request</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h2>MIROBIT</h2>
+        <p>Business Automation & Operational Solutions</p>
+      </div>
+      <div class="socials" aria-label="Social links">
+        <a href="#" aria-label="LinkedIn">LinkedIn</a>
+        <a href="#" aria-label="Facebook">Facebook</a>
+        <a href="#" aria-label="YouTube">YouTube</a>
+      </div>
+      <p class="copyright">© <span data-year></span> MIROBIT. All rights reserved.</p>
+    </div>
   </footer>
-  <script>
-    function toggleTheme() {
-      document.body.classList.toggle('dark-mode');
-    }
 
-    var translations = {
-      en: {
-        "site-title": "MIROB IT Solutions",
-        "site-description": "Empowering Businesses with Innovative IT Services",
-        "about-heading": "About Us",
-        "about-description": "MIROB Solutions is a dynamic IT service company founded by Md Robiul Islam and Mir Abdullah Momin, driven by a shared vision to empower businesses through innovative and cost-effective technology solutions. With a strong understanding of the digital landscape, our mission is to deliver impactful, scalable, and affordable IT services that help businesses grow, streamline operations, and remain competitive in a rapidly evolving market.",
-        "services-heading": "Our Services",
-        "web-design-title": "Web Design",
-        "web-design-description": "We create modern, responsive, and user-friendly websites that not only look stunning but are strategically built to drive engagement and achieve business goals.",
-        "data-entry-title": "Data Entry",
-        "data-entry-description": "Our accurate and efficient data entry solutions support industries of all types, ensuring your business information is always organized, accessible, and secure.",
-        "bpo-title": "BPO",
-        "bpo-description": "We offer reliable outsourcing services with a highly skilled workforce, allowing you to reduce operational costs while maintaining high service quality.",
-        "advisory-title": "IT Consulting",
-        "advisory-description": "Our expert consultants work with you to develop and implement IT strategies that enhance performance, streamline operations, and accelerate digital transformation.",
-        "team-heading": "Meet Our Founders",
-        "robiul-name": "Md Robiul Islam",
-        "robiul-position": "Co-Founder & Technical Lead",
-        "momin-name": "Mir Abdullah Momin",
-        "momin-position": "Co-Founder & Operations Advisor",
-        "member1-name": "Suhin Ahmad Rubel",
-        "member1-position": "Web Designer",
-        "member2-name": "Md Nazmul Hasan",
-        "member2-position": "MIS Executive",
-        "member3-name": "Aimand Mahmud",
-        "member3-position": "BPO Lead",
-        "member4-name": "Ehsan Kabir Abir",
-        "member4-position": "Graphic Designer",
-        "contact-heading": "Contact Us"
-      },
-      bn: {
-        "site-title": "MIROB IT Solutions",
-        "site-description": "উদ্ভাবনী IT সেবা দিয়ে ব্যবসা শক্তিশালীকরণ",
-        "about-heading": "আমাদের সম্পর্কে",
-        "about-description": "MIROBI Solutions হলো একটি গতিশীল আইটি সার্ভিস কোম্পানি, যা প্রতিষ্ঠা করেছেন Md Robiul Islam এবং Mir Abdullah Momin তাদের লক্ষ্য হলো—প্রযুক্তির মাধ্যমে ব্যবসাগুলোকে শক্তিশালী ও উন্নত করা। আমরা ডিজিটাল জগতের বাস্তবতা ও চাহিদাকে ভালোভাবে বুঝি এবং সেই অনুযায়ী ব্যবসা প্রতিষ্ঠানগুলোর জন্য দ্রুত, কার্যকর ও সাশ্রয়ী প্রযুক্তি সেবা প্রদান করি। আমাদের মিশন হচ্ছে—ব্যবসার প্রবৃদ্ধি নিশ্চিত করা, কাজের প্রক্রিয়াকে সহজ করা এবং প্রতিযোগিতামূলক বাজারে প্রতিষ্ঠানগুলোকে সফলভাবে টিকে থাকতে সহায়তা করা।",
-        "services-heading": "আমাদের সেবা",
-        "web-design-title": "ওয়েব ডিজাইন",
-        "web-design-description": "আমরা আধুনিক, প্রতিক্রিয়া-সক্ষম এবং ব্যবহারকারী-বান্ধব ওয়েবসাইট তৈরি করি যা কেবল সুন্দর দেখায় না, তবে ব্যবসায়িক লক্ষ্য অর্জনের জন্য কার্যকরভাবে ডিজাইন করা হয়।",
-        "data-entry-title": "ডেটা এন্ট্রি",
-        "data-entry-description": "আমাদের সঠিক এবং কার্যকরী ডেটা এন্ট্রি সমাধানগুলি সমস্ত ধরণের শিল্পের সহায়ক, আপনার ব্যবসার তথ্য সর্বদা সুশৃঙ্খল, প্রবেশযোগ্য এবং নিরাপদ রাখে।",
-        "bpo-title": "BPO",
-        "bpo-description": "আমরা নির্ভরযোগ্য আউটসোর্সিং পরিষেবাগুলি সরবরাহ করি একটি দক্ষ কর্মী বাহিনীর সাথে, যার ফলে আপনি অপারেশনাল খরচ কমাতে পারবেন এবং উচ্চ পরিষেবা মান বজায় রাখবেন।",
-        "advisory-title": "IT পরামর্শ",
-        "advisory-description": "আমাদের বিশেষজ্ঞ পরামর্শকরা আপনার সাথে কাজ করে IT কৌশলগুলি তৈরি এবং বাস্তবায়ন করতে যা কার্যকারিতা বৃদ্ধি, অপারেশন সহজতর এবং ডিজিটাল রূপান্তর ত্বরান্বিত করে।",
-        "team-heading": "আমাদের প্রতিষ্ঠাতা",
-        "robiul-name": "Md Robiul Islam",
-        "robiul-position": "কো-প্রতিষ্ঠাতা ও টেকনিক্যাল লিড",
-        "momin-name": "Mir Abdullah Momin",
-        "momin-position": "কো-প্রতিষ্ঠাতা ও অপারেশন পরামর্শক",
-        "member1-name": "Suhin Ahmad Rubel",
-        "member1-position": "ওয়েব ডিজাইনার",
-        "member2-name": "Md Nazmul Hasan",
-        "member2-position": "MIS এক্সেকিউটিভ",
-        "member3-name": "Aiman Mahmud",
-        "member3-position": "BPO লিড",
-        "member4-name": "Ehsan Kabir Abir",
-        "member4-position": "গ্রাফিক্স ডিজাইনার ",
-        "contact-heading": "যোগাযোগ করুন"
-      }
-    };
-
-    function switchLang(lang) {
-      var elements = document.querySelectorAll("[id]");
-
-      elements.forEach(function(element) {
-        var key = element.id;
-        if (translations[lang][key]) {
-          element.innerText = translations[lang][key];
-        }
-      });
-    }
-  </script>
+  <script src="app.js"></script>
 </body>
 </html>
-
-
