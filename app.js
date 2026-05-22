@@ -159,20 +159,64 @@ const translations = {
   "06": "০৬"
 };
 
+
+Object.assign(translations, {
+  "Smart Systems for Modern Businesses": "বাংলাদেশি ব্যবসার জন্য স্মার্ট অটোমেশন",
+  "We help Bangladesh businesses automate operations, manage staff, track performance, and simplify workflows through modern digital solutions.": "স্টাফ ম্যানেজমেন্ট, বিক্রয় রিপোর্ট, ইনভেন্টরি, ফলোআপ ও ড্যাশবোর্ড—সবকিছু সহজভাবে পরিচালনার জন্য MIROBIT তৈরি করে বাস্তবভিত্তিক ডিজিটাল সিস্টেম।",
+  "Book Consultation": "পরামর্শ নিন",
+  "Affordable Automation": "সাশ্রয়ী অটোমেশন",
+  "Dashboard-first Systems": "ড্যাশবোর্ড ভিত্তিক সিস্টেম",
+  "Free Initial Consultation": "ফ্রি প্রাথমিক পরামর্শ",
+  "Operations Command": "অপারেশন ড্যাশবোর্ড",
+  "Sales Tracked": "বিক্রয়",
+  "Auto assigned": "দায়িত্ব দেওয়া হয়েছে",
+  "From manual work to controlled operations.": "যে সমস্যাগুলো আমরা সমাধান করি",
+  "MIROBIT solutions for your business.": "আপনার ব্যবসার জন্য MIROBIT সল্যুশন",
+  "Built for practical Bangladesh businesses.": "যেসব ব্যবসার জন্য উপযোগী",
+  "See how a MIROBIT system can work.": "ডেমো সিস্টেম",
+  "Why choose MIROBIT?": "কেন MIROBIT?",
+  "A simple working process.": "কাজ করার সহজ প্রক্রিয়া",
+  "Bangladesh automation": "বাংলাদেশে অটোমেশন",
+  "Business Automation Solutions in Bangladesh": "বাংলাদেশে ব্যবসা অটোমেশন সল্যুশন",
+  "MIROBIT helps restaurants, dealers, distributors, offices, warehouses, clinics, and e-commerce businesses in Bangladesh replace manual work with dashboards, staff systems, inventory tracking, reporting tools, and workflow automation.": "MIROBIT বাংলাদেশের রেস্টুরেন্ট, ডিলার, ডিস্ট্রিবিউটর, অফিস, ওয়্যারহাউস, ক্লিনিক ও ই-কমার্স ব্যবসার জন্য ড্যাশবোর্ড, স্টাফ সিস্টেম, ইনভেন্টরি ট্র্যাকিং, রিপোর্টিং টুলস এবং কাজের অটোমেশন তৈরি করে।",
+  "Ready to modernize your operations?": "কথা বলুন আমাদের সাথে",
+  "Staff Attendance & KPI System": "স্টাফ হাজিরা ও KPI সিস্টেম",
+  "Business Dashboard & Reports": "ব্যবসা ড্যাশবোর্ড ও রিপোর্ট",
+  "WhatsApp & Facebook Follow-up Automation": "WhatsApp ও Facebook ফলোআপ অটোমেশন",
+  "Capture customer information, assign owners, send alerts, and maintain follow-up pipelines without manual chasing.": "গ্রাহকের তথ্য সংগ্রহ, দায়িত্ব দেওয়া, অ্যালার্ট ও ফলোআপ সহজে পরিচালনা করুন।",
+  "Staff": "হাজিরা",
+  "Reports": "রিপোর্ট",
+  "Stock": "স্টক",
+  "Follow": "ফলোআপ",
+  "System": "সিস্টেম",
+  "Quick Links": "দ্রুত লিংক",
+  "Social": "সোশ্যাল",
+  "Modern automation, dashboard, reporting, and workflow systems for Bangladesh SMEs.": "বাংলাদেশের SME ব্যবসার জন্য অটোমেশন, ড্যাশবোর্ড, রিপোর্টিং ও কাজের সিস্টেম।",
+  "All rights reserved.": "সর্বস্বত্ব সংরক্ষিত।"
+});
+
+const banglaDigits = { "0": "০", "1": "১", "2": "২", "3": "৩", "4": "৪", "5": "৫", "6": "৬", "7": "৭", "8": "৮", "9": "৯" };
+const toBanglaNumber = (value) => String(value).replace(/[0-9]/g, (digit) => banglaDigits[digit] || digit);
+
 const whatsappMessages = {
   en: "Hello MIROBIT, I want to know more about your business automation solutions.",
   bn: "হ্যালো MIROBIT, আপনাদের ব্যবসা অটোমেশন সল্যুশন সম্পর্কে জানতে চাই।",
 };
 
-if (year) {
-  year.textContent = new Date().getFullYear();
-}
+const updateYear = () => {
+  if (!year) return;
+  const currentYear = new Date().getFullYear();
+  year.textContent = currentLanguage === "bn" ? toBanglaNumber(currentYear) : currentYear;
+};
+
+updateYear();
 
 const translated = (value) => {
   if (currentLanguage !== "bn") return value;
   return translations[value] || value;
 };
 
+// Localization updates visible copy, form placeholders, year formatting, and WhatsApp messages.
 const setLocalizedText = (element, englishValue) => {
   if (!element || englishValue == null) return;
   const value = String(englishValue);
@@ -231,9 +275,10 @@ const applyLanguage = (language) => {
   if (metaDescription) {
     metaDescription.content = currentLanguage === "bn"
       ? document.querySelector('meta[name="description"][lang="bn"]')?.content || metaDescription.content
-      : "MIROBIT helps Bangladesh SMEs automate operations, manage staff, track performance, improve inventory tracking, and simplify workflows with modern business dashboards.";
+      : "MIROBIT provides business automation, staff management systems, dashboards, inventory tracking, reporting tools, and workflow automation solutions for Bangladesh SMEs.";
   }
 
+  updateYear();
   updateWhatsAppLinks();
 };
 
@@ -271,6 +316,7 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
 
+// Live stats: fetches Google Sheet-backed dashboard values and keeps demo fallbacks on failure.
 const renderStats = (stats) => {
   setLocalizedText(statTargets.attendanceValue, formatPercentMetric(stats?.attendance?.value) || statTargets.attendanceValue?.dataset.originalText || "94%");
   setLocalizedText(statTargets.attendanceLabel, formatPercentMetric(stats?.attendance?.label, 2) || statTargets.attendanceLabel?.dataset.originalText || "+8.4%");
