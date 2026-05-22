@@ -1,9 +1,13 @@
 const STATS_API_URL = "https://script.google.com/macros/s/AKfycbys5TdJTlSbQ7JI7hBmWVgebQvcWlos5uIk7X2X__PrKxD8eacIvk1nwZ7mv9eFbDua/exec";
+const WHATSAPP_NUMBER = "8801XXXXXXXXX";
 
 const header = document.querySelector("[data-header]");
 const menuToggle = document.querySelector("[data-menu-toggle]");
 const navLinks = document.querySelector("[data-nav-links]");
 const languageToggle = document.querySelector("[data-language-toggle]");
+const popup = document.querySelector("[data-whatsapp-popup]");
+const popupClose = document.querySelector("[data-popup-close]");
+const popupLater = document.querySelector("[data-popup-later]");
 const year = document.querySelector("[data-year]");
 const statTargets = {
   attendanceValue: document.querySelector('[data-stat="attendance-value"]'),
@@ -29,99 +33,105 @@ const translations = {
   "Industries": "ইন্ডাস্ট্রি",
   "Demo": "ডেমো",
   "Contact": "যোগাযোগ",
+  "Contact Us": "যোগাযোগ করুন",
   "WhatsApp": "WhatsApp",
-  "Business Automation & Operational Solutions": "বিজনেস অটোমেশন ও অপারেশনাল সল্যুশন",
+  "Business Automation & Operational Solutions": "ব্যবসা অটোমেশন ও পরিচালনা সল্যুশন",
   "Smart Systems for Modern Businesses": "আধুনিক ব্যবসার জন্য স্মার্ট সিস্টেম",
-  "We help Bangladesh SMEs automate operations, manage staff, track performance, and simplify workflows through modern digital solutions.": "আমরা বাংলাদেশের SME ব্যবসাকে অপারেশন অটোমেট করতে, স্টাফ ম্যানেজ করতে, পারফরম্যান্স ট্র্যাক করতে এবং দৈনন্দিন কাজের প্রক্রিয়া সহজ করতে আধুনিক ডিজিটাল সল্যুশন দিই।",
-  "Book Consultation": "কনসালটেশন বুক করুন",
+  "We help Bangladesh SMEs automate operations, manage staff, track performance, and simplify workflows through modern digital solutions.": "আমরা বাংলাদেশের ছোট ও মাঝারি ব্যবসাকে কাজ অটোমেট করতে, স্টাফ পরিচালনা করতে, পারফরম্যান্স দেখতে এবং দৈনন্দিন কাজ সহজ করতে আধুনিক ডিজিটাল সল্যুশন দিই।",
+  "Book Consultation": "পরামর্শ বুক করুন",
   "View Solutions": "সল্যুশন দেখুন",
-  "Bangladesh SME focused": "বাংলাদেশ SME ফোকাসড",
-  "Dashboard led": "ড্যাশবোর্ড-ভিত্তিক",
-  "Workflow first": "ওয়ার্কফ্লো আগে",
-  "Operations Command": "অপারেশনস কমান্ড",
-  "Attendance": "অ্যাটেনডেন্স",
-  "Sales Tracked": "সেলস ট্র্যাকড",
-  "Follow-ups": "ফলো-আপ",
+  "Built for Bangladesh SMEs": "বাংলাদেশের ছোট ও মাঝারি ব্যবসার জন্য",
+  "Affordable automation": "সাশ্রয়ী অটোমেশন",
+  "Dashboard-first systems": "ড্যাশবোর্ড ভিত্তিক সিস্টেম",
+  "Operations Command": "অপারেশন কন্ট্রোল",
+  "Live sync": "লাইভ সিঙ্ক",
+  "Connected": "সংযুক্ত",
+  "Auto update": "স্বয়ংক্রিয় আপডেট",
+  "Attendance": "হাজিরা",
+  "Sales Tracked": "বিক্রয় ট্র্যাকিং",
+  "Follow-ups": "ফলোআপ",
   "Live": "লাইভ",
   "Today": "আজ",
-  "Lead captured": "লিড ক্যাপচার হয়েছে",
+  "Weekly operations": "সাপ্তাহিক কার্যক্রম",
+  "Performance": "পারফরম্যান্স",
+  "Lead captured": "গ্রাহকের তথ্য সংগ্রহ",
   "Facebook form synced": "Facebook ফর্ম সিঙ্ক হয়েছে",
-  "Auto assigned": "অটো অ্যাসাইন হয়েছে",
-  "Sales team notified": "সেলস টিমকে জানানো হয়েছে",
+  "Auto assigned": "স্বয়ংক্রিয়ভাবে দায়িত্ব দেওয়া হয়েছে",
+  "Sales team notified": "বিক্রয় টিমকে জানানো হয়েছে",
   "Manager view": "ম্যানেজার ভিউ",
-  "Real-time status updated": "রিয়েল-টাইম স্ট্যাটাস আপডেটেড",
+  "Real-time status updated": "রিয়েল-টাইম অবস্থা আপডেট হয়েছে",
   "Business problems we solve": "যে ব্যবসায়িক সমস্যা আমরা সমাধান করি",
-  "From daily manual work to visible, controlled operations for Bangladesh SMEs.": "দৈনন্দিন ম্যানুয়াল কাজ থেকে বাংলাদেশের SME ব্যবসার জন্য পরিষ্কার, নিয়ন্ত্রিত অপারেশন।",
+  "From daily manual work to visible, controlled operations for Bangladesh SMEs.": "দৈনন্দিন ম্যানুয়াল কাজ থেকে বাংলাদেশের ছোট ও মাঝারি ব্যবসার জন্য পরিষ্কার, নিয়ন্ত্রিত পরিচালনা।",
   "Manual reporting": "ম্যানুয়াল রিপোর্টিং",
-  "Reports take hours to prepare and still miss important operational details.": "রিপোর্ট বানাতে ঘণ্টা লাগে, তবুও গুরুত্বপূর্ণ অপারেশনাল তথ্য বাদ পড়ে যায়।",
-  "Excel chaos": "Excel বিশৃঙ্খলা",
+  "Reports take hours to prepare and still miss important operational details.": "রিপোর্ট বানাতে ঘণ্টা লাগে, তবুও গুরুত্বপূর্ণ পরিচালনাগত তথ্য বাদ পড়ে যায়।",
+  "Excel chaos": "Excel ফাইলের বিশৃঙ্খলা",
   "Multiple sheets, duplicate entries, and outdated files make decisions slower.": "অনেক শিট, ডুপ্লিকেট এন্ট্রি এবং পুরোনো ফাইল সিদ্ধান্ত নেওয়া ধীর করে দেয়।",
-  "Staff mismanagement": "স্টাফ ম্যানেজমেন্ট সমস্যা",
-  "Attendance, performance, and accountability are hard to track consistently.": "অ্যাটেনডেন্স, পারফরম্যান্স এবং জবাবদিহি নিয়মিত ট্র্যাক করা কঠিন হয়।",
-  "No real-time business visibility": "রিয়েল-টাইম ব্যবসার ভিজিবিলিটি নেই",
+  "Staff mismanagement": "স্টাফ পরিচালনায় সমস্যা",
+  "Attendance, performance, and accountability are hard to track consistently.": "হাজিরা, কাজের মান এবং জবাবদিহি নিয়মিত দেখা কঠিন হয়।",
+  "No real-time business visibility": "রিয়েল-টাইম ব্যবসার চিত্র দেখা যায় না",
   "Owners and managers cannot quickly see what is happening across the business.": "মালিক ও ম্যানেজার দ্রুত বুঝতে পারেন না ব্যবসার কোথায় কী হচ্ছে।",
   "Inventory confusion": "ইনভেন্টরি বিভ্রান্তি",
-  "Stock movement, sales, returns, and purchase decisions become unclear.": "স্টক মুভমেন্ট, সেলস, রিটার্ন এবং পারচেজ সিদ্ধান্ত অস্পষ্ট হয়ে যায়।",
-  "Missed customer follow-ups": "কাস্টমার ফলো-আপ মিস হওয়া",
-  "Leads and customers get lost when reminders and assignments are manual.": "রিমাইন্ডার ও অ্যাসাইনমেন্ট ম্যানুয়াল হলে লিড ও কাস্টমার সহজেই হারিয়ে যায়।",
-  "Operational systems designed for how Bangladesh businesses actually work.": "বাংলাদেশের ব্যবসা বাস্তবে যেভাবে চলে, সেভাবেই ডিজাইন করা অপারেশনাল সিস্টেম।",
-  "Staff Attendance & KPI Systems": "স্টাফ অ্যাটেনডেন্স ও KPI সিস্টেম",
-  "Track presence, daily tasks, team performance, and manager approvals from one structured system.": "একটি স্ট্রাকচার্ড সিস্টেমে উপস্থিতি, দৈনিক কাজ, টিম পারফরম্যান্স এবং ম্যানেজার অনুমোদন ট্র্যাক করুন।",
-  "Business Dashboards & Reports": "বিজনেস ড্যাশবোর্ড ও রিপোর্ট",
-  "Turn sales, operations, staff, dealer, distributor, and inventory data into clear dashboards for faster decisions.": "সেলস, অপারেশন, স্টাফ, ডিলার, ডিস্ট্রিবিউটর এবং ইনভেন্টরি ডেটাকে দ্রুত সিদ্ধান্তের জন্য পরিষ্কার ড্যাশবোর্ডে আনুন।",
-  "Inventory & Sales Tracking": "ইনভেন্টরি ও সেলস ট্র্যাকিং",
-  "Monitor stock, sales, returns, low-stock alerts, and location-wise movement with reliable records.": "বিশ্বস্ত রেকর্ড দিয়ে স্টক, সেলস, রিটার্ন, লো-স্টক অ্যালার্ট এবং লোকেশনভিত্তিক মুভমেন্ট মনিটর করুন।",
-  "WhatsApp/Facebook Lead Automation": "WhatsApp/Facebook লিড অটোমেশন",
-  "Capture leads, assign owners, send alerts, and maintain follow-up pipelines without manual chasing.": "ম্যানুয়াল ফলো-আপ ছাড়াই লিড ক্যাপচার, অ্যাসাইন, অ্যালার্ট এবং ফলো-আপ পাইপলাইন পরিচালনা করুন।",
-  "AI Workflow Automation": "AI ওয়ার্কফ্লো অটোমেশন",
-  "Use practical AI assistance for summaries, task routing, customer response drafts, and recurring operations.": "সামারি, টাস্ক রাউটিং, কাস্টমার রেসপন্স ড্রাফট এবং নিয়মিত কাজের জন্য ব্যবহারিক AI সহায়তা নিন।",
-  "Custom Operational Systems": "কাস্টম অপারেশনাল সিস্টেম",
-  "Build role-based systems that match your business process instead of forcing your team into generic tools.": "জেনেরিক টুলে টিমকে মানিয়ে নেওয়ার বদলে আপনার ব্যবসার প্রক্রিয়া অনুযায়ী রোল-ভিত্তিক সিস্টেম তৈরি করুন।",
-  "Built for Bangladesh teams that need control, visibility, and repeatable workflows.": "যেসব বাংলাদেশি টিমের কন্ট্রোল, ভিজিবিলিটি এবং রিপিটেবল ওয়ার্কফ্লো দরকার, তাদের জন্য তৈরি।",
+  "Stock movement, sales, returns, and purchase decisions become unclear.": "স্টক চলাচল, বিক্রয়, রিটার্ন এবং কেনার সিদ্ধান্ত অস্পষ্ট হয়ে যায়।",
+  "Missed customer follow-ups": "কাস্টমার ফলোআপ মিস হওয়া",
+  "Leads and customers get lost when reminders and assignments are manual.": "রিমাইন্ডার ও দায়িত্ব দেওয়া ম্যানুয়াল হলে গ্রাহকের তথ্য ও ফলোআপ হারিয়ে যায়।",
+  "Operational systems designed for how Bangladesh businesses actually work.": "বাংলাদেশের ব্যবসা বাস্তবে যেভাবে চলে, সেভাবেই ডিজাইন করা পরিচালনা সিস্টেম।",
+  "Staff Attendance & KPI Systems": "স্টাফ হাজিরা ও KPI সিস্টেম",
+  "Track presence, daily tasks, team performance, and manager approvals from one structured system.": "একটি সাজানো সিস্টেমে হাজিরা, দৈনিক কাজ, টিমের পারফরম্যান্স এবং ম্যানেজারের অনুমোদন দেখুন।",
+  "Business Dashboards & Reports": "ব্যবসা ড্যাশবোর্ড ও রিপোর্ট",
+  "Turn sales, operations, staff, dealer, distributor, and inventory data into clear dashboards for faster decisions.": "বিক্রয়, পরিচালনা, স্টাফ, ডিলার, ডিস্ট্রিবিউটর এবং ইনভেন্টরি তথ্যকে দ্রুত সিদ্ধান্তের জন্য পরিষ্কার ড্যাশবোর্ডে আনুন।",
+  "Inventory & Sales Tracking": "ইনভেন্টরি ও বিক্রয় ট্র্যাকিং",
+  "Monitor stock, sales, returns, low-stock alerts, and location-wise movement with reliable records.": "বিশ্বস্ত রেকর্ড দিয়ে স্টক, বিক্রয়, রিটার্ন, কম-স্টক অ্যালার্ট এবং লোকেশনভিত্তিক চলাচল দেখুন।",
+  "WhatsApp/Facebook Lead Automation": "WhatsApp/Facebook গ্রাহক তথ্য অটোমেশন",
+  "Capture leads, assign owners, send alerts, and maintain follow-up pipelines without manual chasing.": "ম্যানুয়াল চাপ ছাড়াই গ্রাহকের তথ্য সংগ্রহ, দায়িত্ব দেওয়া, অ্যালার্ট পাঠানো এবং ফলোআপ চালু রাখুন।",
+  "AI Workflow Automation": "AI কাজের প্রক্রিয়া অটোমেশন",
+  "Use practical AI assistance for summaries, task routing, customer response drafts, and recurring operations.": "সারাংশ, কাজ ভাগ করা, কাস্টমার রিপ্লাই খসড়া এবং নিয়মিত কাজের জন্য ব্যবহারিক AI সহায়তা নিন।",
+  "Custom Operational Systems": "কাস্টম পরিচালনা সিস্টেম",
+  "Build role-based systems that match your business process instead of forcing your team into generic tools.": "সাধারণ টুলে টিমকে মানিয়ে নেওয়ার বদলে আপনার ব্যবসার প্রক্রিয়া অনুযায়ী রোল-ভিত্তিক সিস্টেম তৈরি করুন।",
+  "Built for Bangladesh teams that need control, visibility, and repeatable workflows.": "যেসব বাংলাদেশি টিমের নিয়ন্ত্রণ, পরিষ্কার ভিজিবিলিটি এবং পুনরাবৃত্ত কাজের প্রক্রিয়া দরকার, তাদের জন্য তৈরি।",
   "Restaurants": "রেস্টুরেন্ট",
   "Distributors & Dealers": "ডিস্ট্রিবিউটর ও ডিলার",
   "Offices & Agencies": "অফিস ও এজেন্সি",
-  "Warehouses": "ওয়্যারহাউস",
+  "Warehouses": "গুদাম",
   "Clinics": "ক্লিনিক",
   "E-commerce Businesses": "ই-কমার্স ব্যবসা",
   "Demo systems": "ডেমো সিস্টেম",
-  "Preview the type of systems MIROBIT can tailor for your operation.": "আপনার অপারেশনের জন্য MIROBIT কী ধরনের সিস্টেম কাস্টমাইজ করতে পারে তার প্রিভিউ দেখুন।",
-  "Staff Management Dashboard": "স্টাফ ম্যানেজমেন্ট ড্যাশবোর্ড",
-  "Attendance, KPIs, tasks, approvals, and manager summaries in a single operational view.": "অ্যাটেনডেন্স, KPI, টাস্ক, অনুমোদন এবং ম্যানেজার সামারি এক অপারেশনাল ভিউতে।",
-  "Request Demo": "ডেমো চাইুন",
-  "Restaurant Sales & Inventory Dashboard": "রেস্টুরেন্ট সেলস ও ইনভেন্টরি ড্যাশবোর্ড",
-  "Daily sales, item performance, stock movement, purchase alerts, and branch-level reports.": "দৈনিক সেলস, আইটেম পারফরম্যান্স, স্টক মুভমেন্ট, পারচেজ অ্যালার্ট এবং ব্রাঞ্চভিত্তিক রিপোর্ট।",
-  "Lead Automation Workflow": "লিড অটোমেশন ওয়ার্কফ্লো",
-  "Lead capture, assignment, follow-up reminders, status tracking, and team accountability.": "লিড ক্যাপচার, অ্যাসাইনমেন্ট, ফলো-আপ রিমাইন্ডার, স্ট্যাটাস ট্র্যাকিং এবং টিম জবাবদিহি।",
+  "Preview the type of systems MIROBIT can tailor for your operation.": "আপনার পরিচালনার জন্য MIROBIT কী ধরনের সিস্টেম সাজিয়ে দিতে পারে তার প্রিভিউ দেখুন।",
+  "Staff Management Dashboard": "স্টাফ পরিচালনা ড্যাশবোর্ড",
+  "Attendance, KPIs, tasks, approvals, and manager summaries in a single operational view.": "হাজিরা, KPI, কাজ, অনুমোদন এবং ম্যানেজার সারাংশ এক জায়গায় দেখুন।",
+  "Request Demo": "ডেমো চাই",
+  "Restaurant Sales & Inventory Dashboard": "রেস্টুরেন্ট বিক্রয় ও ইনভেন্টরি ড্যাশবোর্ড",
+  "Daily sales, item performance, stock movement, purchase alerts, and branch-level reports.": "দৈনিক বিক্রয়, আইটেম পারফরম্যান্স, স্টক চলাচল, কেনার অ্যালার্ট এবং ব্রাঞ্চভিত্তিক রিপোর্ট।",
+  "Lead Automation Workflow": "গ্রাহক ফলোআপ অটোমেশন",
+  "Lead capture, assignment, follow-up reminders, status tracking, and team accountability.": "গ্রাহকের তথ্য সংগ্রহ, দায়িত্ব দেওয়া, ফলোআপ রিমাইন্ডার, অবস্থা দেখা এবং টিমের জবাবদিহি।",
   "Why MIROBIT": "কেন MIROBIT",
-  "Practical automation for real business operations.": "বাস্তব ব্যবসায়িক অপারেশনের জন্য ব্যবহারিক অটোমেশন।",
+  "Practical automation for real business operations.": "বাস্তব ব্যবসা পরিচালনার জন্য ব্যবহারিক অটোমেশন।",
   "Practical business experience": "বাস্তব ব্যবসার অভিজ্ঞতা",
   "Solutions are shaped around daily operator, manager, and owner needs.": "অপারেটর, ম্যানেজার এবং মালিকের দৈনন্দিন প্রয়োজন অনুযায়ী সল্যুশন তৈরি হয়।",
-  "Automation-first approach": "অটোমেশন-ফার্স্ট পদ্ধতি",
+  "Automation-first approach": "অটোমেশন-প্রথম পদ্ধতি",
   "We remove repeated manual work before adding more screens.": "আরও স্ক্রিন যোগ করার আগে আমরা বারবার করা ম্যানুয়াল কাজ কমাই।",
-  "Affordable for SMEs": "SME ব্যবসার জন্য সাশ্রয়ী",
-  "Systems can start focused and grow as the business expands.": "সিস্টেম ছোট ও ফোকাসডভাবে শুরু হয়ে ব্যবসা বড় হলে স্কেল করতে পারে।",
+  "Affordable for SMEs": "ছোট ও মাঝারি ব্যবসার জন্য সাশ্রয়ী",
+  "Systems can start focused and grow as the business expands.": "সিস্টেম ছোটভাবে শুরু হয়ে ব্যবসা বড় হলে ধাপে ধাপে বাড়তে পারে।",
   "Bangladesh business understanding": "বাংলাদেশি ব্যবসার বাস্তবতা বোঝা",
-  "Workflows consider local sales, staff, reporting, and communication habits.": "ওয়ার্কফ্লোতে স্থানীয় সেলস, স্টাফ, রিপোর্টিং এবং কমিউনিকেশন অভ্যাস বিবেচনা করা হয়।",
-  "Scalable systems": "স্কেলযোগ্য সিস্টেম",
-  "Role access, dashboards, and data structures are planned for growth.": "রোল অ্যাক্সেস, ড্যাশবোর্ড এবং ডেটা স্ট্রাকচার গ্রোথ মাথায় রেখে পরিকল্পনা করা হয়।",
-  "Operational efficiency focus": "অপারেশনাল দক্ষতায় ফোকাস",
+  "Workflows consider local sales, staff, reporting, and communication habits.": "কাজের প্রক্রিয়ায় স্থানীয় বিক্রয়, স্টাফ, রিপোর্টিং এবং যোগাযোগের অভ্যাস বিবেচনা করা হয়।",
+  "Scalable systems": "বড় করার মতো সিস্টেম",
+  "Role access, dashboards, and data structures are planned for growth.": "রোল অ্যাক্সেস, ড্যাশবোর্ড এবং ডেটা কাঠামো গ্রোথ মাথায় রেখে পরিকল্পনা করা হয়।",
+  "Operational efficiency focus": "পরিচালনাগত দক্ষতায় ফোকাস",
   "Every feature is tied to faster work, better tracking, or clearer decisions.": "প্রতিটি ফিচার দ্রুত কাজ, ভালো ট্র্যাকিং বা পরিষ্কার সিদ্ধান্তের সঙ্গে যুক্ত।",
   "Process": "প্রক্রিয়া",
   "A clear path from business problem to working system.": "ব্যবসার সমস্যা থেকে কার্যকর সিস্টেমে যাওয়ার পরিষ্কার পথ।",
   "Understand Business": "ব্যবসা বোঝা",
   "We learn your teams, reports, tools, bottlenecks, and decision points.": "আমরা আপনার টিম, রিপোর্ট, টুল, বাধা এবং সিদ্ধান্তের জায়গাগুলো বুঝি।",
-  "Map Workflow": "ওয়ার্কফ্লো ম্যাপ করা",
-  "We define roles, data flow, approvals, automation points, and dashboard needs.": "রোল, ডেটা ফ্লো, অনুমোদন, অটোমেশন পয়েন্ট এবং ড্যাশবোর্ড প্রয়োজন নির্ধারণ করি।",
+  "Map Workflow": "কাজের প্রক্রিয়া ম্যাপ করা",
+  "We define roles, data flow, approvals, automation points, and dashboard needs.": "রোল, ডেটা প্রবাহ, অনুমোদন, অটোমেশনের জায়গা এবং ড্যাশবোর্ড প্রয়োজন নির্ধারণ করি।",
   "Build System": "সিস্টেম তৈরি",
   "We create a practical solution focused on adoption and measurable outcomes.": "ব্যবহারযোগ্যতা এবং মাপা যায় এমন ফলাফলের দিকে ফোকাস করে বাস্তব সল্যুশন তৈরি করি।",
   "Train Team": "টিম ট্রেইনিং",
   "We help staff and managers use the system confidently from day one.": "প্রথম দিন থেকেই স্টাফ ও ম্যানেজার যেন আত্মবিশ্বাসের সঙ্গে সিস্টেম ব্যবহার করতে পারে, সে সহায়তা করি।",
   "Support & Improve": "সাপোর্ট ও উন্নয়ন",
-  "We refine workflows as your business grows and new needs appear.": "ব্যবসা বড় হলে এবং নতুন প্রয়োজন এলে আমরা ওয়ার্কফ্লো উন্নত করি।",
-  "Ready to modernize your operations?": "আপনার অপারেশন আধুনিক করতে প্রস্তুত?",
-  "Share your current process and we will help identify where automation, dashboards, and workflow systems can create immediate value.": "আপনার বর্তমান প্রক্রিয়া জানালে আমরা দেখিয়ে দেব কোথায় অটোমেশন, ড্যাশবোর্ড ও ওয়ার্কফ্লো সিস্টেম দ্রুত ভ্যালু তৈরি করতে পারে।",
-  "Free initial consultation available.": "প্রথম কনসালটেশন ফ্রি।",
+  "We refine workflows as your business grows and new needs appear.": "ব্যবসা বড় হলে এবং নতুন প্রয়োজন এলে আমরা কাজের প্রক্রিয়া উন্নত করি।",
+  "Ready to modernize your operations?": "আপনার পরিচালনা আধুনিক করতে প্রস্তুত?",
+  "Share your current process and we will help identify where automation, dashboards, and workflow systems can create immediate value.": "আপনার বর্তমান প্রক্রিয়া জানালে আমরা দেখিয়ে দেব কোথায় অটোমেশন, ড্যাশবোর্ড ও কাজের সিস্টেম দ্রুত ভ্যালু তৈরি করতে পারে।",
+  "Free Consultation Available": "ফ্রি পরামর্শ পাওয়া যাবে",
   "Chat on WhatsApp": "WhatsApp-এ কথা বলুন",
   "Email": "ইমেইল",
   "Office": "অফিস",
@@ -133,11 +143,25 @@ const translations = {
   "Submit Request": "রিকোয়েস্ট পাঠান",
   "Your name": "আপনার নাম",
   "Company or shop name": "কোম্পানি বা দোকানের নাম",
-  "Staff, inventory, sales, dashboard, lead follow-up...": "স্টাফ, ইনভেন্টরি, সেলস, ড্যাশবোর্ড, লিড ফলো-আপ...",
+  "Staff, inventory, sales, dashboard, customer follow-up...": "স্টাফ, ইনভেন্টরি, বিক্রয়, ড্যাশবোর্ড, কাস্টমার ফলোআপ...",
   "LinkedIn": "LinkedIn",
   "Facebook": "Facebook",
   "YouTube": "YouTube",
   "MIROBIT. All rights reserved.": "MIROBIT. সর্বস্বত্ব সংরক্ষিত।",
+  "Need help automating your business?": "ব্যবসার কাজ অটোমেটেড করতে চান?",
+  "Get a free initial consultation for staff management, reports, dashboards, inventory, and follow-up automation.": "স্টাফ ম্যানেজমেন্ট, রিপোর্ট, ড্যাশবোর্ড, ইনভেন্টরি ও ফলোআপ অটোমেশনের জন্য ফ্রি প্রাথমিক পরামর্শ নিন।",
+  "Maybe later": "পরে দেখব",
+  "01": "০১",
+  "02": "০২",
+  "03": "০৩",
+  "04": "০৪",
+  "05": "০৫",
+  "06": "০৬"
+};
+
+const whatsappMessages = {
+  en: "Hello MIROBIT, I want to know more about your business automation solutions.",
+  bn: "হ্যালো MIROBIT, আপনাদের ব্যবসা অটোমেশন সল্যুশন সম্পর্কে জানতে চাই।",
 };
 
 if (year) {
@@ -157,6 +181,13 @@ const setLocalizedText = (element, englishValue) => {
   if (element.firstChild?.nodeType === Node.TEXT_NODE) {
     element.firstChild.originalText = value;
   }
+};
+
+const updateWhatsAppLinks = () => {
+  const message = encodeURIComponent(whatsappMessages[currentLanguage]);
+  document.querySelectorAll("[data-whatsapp-link]").forEach((link) => {
+    link.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+  });
 };
 
 const formatPercentMetric = (value, fractionDigits = 0) => {
@@ -202,6 +233,8 @@ const applyLanguage = (language) => {
       ? document.querySelector('meta[name="description"][lang="bn"]')?.content || metaDescription.content
       : "MIROBIT helps Bangladesh SMEs automate operations, manage staff, track performance, improve inventory tracking, and simplify workflows with modern business dashboards.";
   }
+
+  updateWhatsAppLinks();
 };
 
 const syncHeader = () => {
@@ -270,6 +303,33 @@ const loadStats = async () => {
     console.warn("MIROBIT stats API unavailable; keeping demo dashboard values.", error);
   }
 };
+
+const closePopup = () => {
+  if (!popup) return;
+  popup.classList.remove("is-visible");
+  sessionStorage.setItem("mirobit-popup-shown", "true");
+};
+
+const showPopup = () => {
+  if (!popup || sessionStorage.getItem("mirobit-popup-shown") === "true") return;
+  popup.hidden = false;
+  requestAnimationFrame(() => popup.classList.add("is-visible"));
+  sessionStorage.setItem("mirobit-popup-shown", "true");
+};
+
+const maybeShowPopupOnScroll = () => {
+  const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+  if (maxScroll <= 0) return;
+  if (window.scrollY / maxScroll >= 0.4) {
+    showPopup();
+    window.removeEventListener("scroll", maybeShowPopupOnScroll);
+  }
+};
+
+popupClose?.addEventListener("click", closePopup);
+popupLater?.addEventListener("click", closePopup);
+window.addEventListener("scroll", maybeShowPopupOnScroll, { passive: true });
+window.setTimeout(showPopup, 10000);
 
 applyLanguage(currentLanguage);
 loadStats();
