@@ -196,7 +196,17 @@ Object.assign(translations, {
 });
 
 const banglaDigits = { "0": "০", "1": "১", "2": "২", "3": "৩", "4": "৪", "5": "৫", "6": "৬", "7": "৭", "8": "৮", "9": "৯" };
-const toBanglaNumber = (value) => String(value).replace(/[0-9]/g, (digit) => banglaDigits[digit] || digit);
+const toBanglaDigits = (value) => String(value).replace(/[0-9]/g, (digit) => banglaDigits[digit] || digit);
+const toBanglaNumber = toBanglaDigits;
+
+const formatLocalizedMetric = (value, lang) => {
+  if (value == null) return value;
+  const metric = String(value);
+  if (lang !== "bn") return metric;
+
+  const withBanglaUnit = metric.replace(/L\b/i, " লাখ");
+  return toBanglaDigits(withBanglaUnit);
+};
 
 const whatsappMessages = {
   en: "Hello MIROBIT, I want to know more about your business automation solutions.",

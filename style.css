@@ -1132,6 +1132,40 @@ h2 {
   }
 }
 
+/* Small safe patch: metric spacing, Bangla headline scale, logo visibility, mobile WhatsApp safety */
+.kpi-card strong {
+  margin-bottom: 12px;
+}
+
+body.is-bangla .hero h1 {
+  font-size: clamp(2.75rem, 3.9vw, 3.25rem);
+}
+
+.site-header .brand img {
+  width: 176px;
+}
+
+@media (max-width: 680px) {
+  body.is-bangla .hero h1 {
+    font-size: clamp(1.85rem, 8.1vw, 2.05rem);
+  }
+
+  .site-header .brand img {
+    width: 150px;
+  }
+
+  .floating-whatsapp {
+    right: 12px;
+    bottom: 18px;
+  }
+
+  .floating-whatsapp__icon {
+    width: 48px;
+    height: 48px;
+    font-size: 0.9rem;
+  }
+}
+
 /* Premium visual upgrade */
 :root {
   --blue-wash: #ECF8FF;
@@ -1598,5 +1632,18 @@ h1 {
 
   .popup-actions .btn {
     width: 100%;
+  }
+}
+
+@media (max-width: 680px) {
+  .floating-whatsapp {
+    right: 12px;
+    bottom: 18px;
+  }
+
+  .floating-whatsapp__icon {
+    width: 48px;
+    height: 48px;
+    font-size: 0.9rem;
   }
 }
