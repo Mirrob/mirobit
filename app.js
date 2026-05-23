@@ -8,6 +8,8 @@ const languageToggle = document.querySelector("[data-language-toggle]");
 const popup = document.querySelector("[data-whatsapp-popup]");
 const popupClose = document.querySelector("[data-popup-close]");
 const popupLater = document.querySelector("[data-popup-later]");
+const staffDemoModal = document.querySelector("[data-staff-demo-modal]");
+const staffDemoPlayer = document.querySelector("[data-staff-demo-player]");
 const year = document.querySelector("[data-year]");
 const statTargets = {
   attendanceValue: document.querySelector('[data-stat="attendance-value"]'),
@@ -99,6 +101,7 @@ const translations = {
   "Staff Management Dashboard": "স্টাফ পরিচালনা ড্যাশবোর্ড",
   "Attendance, KPIs, tasks, approvals, and manager summaries in a single operational view.": "হাজিরা, KPI, কাজ, অনুমোদন এবং ম্যানেজার সারাংশ এক জায়গায় দেখুন।",
   "Request Demo": "ডেমো চাই",
+  "Watch Demo": "ডেমো দেখুন",
   "Restaurant Sales & Inventory Dashboard": "রেস্টুরেন্ট বিক্রয় ও ইনভেন্টরি ড্যাশবোর্ড",
   "Daily sales, item performance, stock movement, purchase alerts, and branch-level reports.": "দৈনিক বিক্রয়, আইটেম পারফরম্যান্স, স্টক চলাচল, কেনার অ্যালার্ট এবং ব্রাঞ্চভিত্তিক রিপোর্ট।",
   "Lead Automation Workflow": "গ্রাহক ফলোআপ অটোমেশন",
@@ -426,6 +429,24 @@ const showPopup = () => {
   sessionStorage.setItem("mirobit-popup-shown", "true");
 };
 
+const openStaffDemo = () => {
+  if (!staffDemoModal || !staffDemoPlayer) return;
+  staffDemoModal.hidden = false;
+  document.body.classList.add("is-video-modal-open");
+  staffDemoPlayer.currentTime = 0;
+  staffDemoPlayer.play().catch(() => {
+    // Mobile browsers may require the user to press play after the modal opens.
+  });
+};
+
+const closeStaffDemo = () => {
+  if (!staffDemoModal || !staffDemoPlayer) return;
+  staffDemoPlayer.pause();
+  staffDemoPlayer.currentTime = 0;
+  staffDemoModal.hidden = true;
+  document.body.classList.remove("is-video-modal-open");
+};
+
 const maybeShowPopupOnScroll = () => {
   const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
   if (maxScroll <= 0) return;
@@ -437,6 +458,17 @@ const maybeShowPopupOnScroll = () => {
 
 popupClose?.addEventListener("click", closePopup);
 popupLater?.addEventListener("click", closePopup);
+document.querySelectorAll("[data-staff-demo-open]").forEach((trigger) => {
+  trigger.addEventListener("click", openStaffDemo);
+});
+document.querySelectorAll("[data-staff-demo-close]").forEach((trigger) => {
+  trigger.addEventListener("click", closeStaffDemo);
+});
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && staffDemoModal && !staffDemoModal.hidden) {
+    closeStaffDemo();
+  }
+});
 window.addEventListener("scroll", maybeShowPopupOnScroll, { passive: true });
 window.setTimeout(showPopup, 10000);
 

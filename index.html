@@ -182,10 +182,12 @@
         </div>
         <div class="demo-grid">
           <article class="demo-card reveal">
-            <div class="mini-ui staff-ui" aria-hidden="true"><span></span><span></span><span></span><div></div></div>
+            <button class="demo-video-preview" type="button" data-staff-demo-open aria-label="Watch Staff Management Dashboard demo">
+              <video src="assets/videos/staff-management-demo.mp4" muted autoplay loop playsinline preload="metadata"></video>
+            </button>
             <h3>Staff Management Dashboard</h3>
             <p>Attendance, KPIs, tasks, approvals, and manager summaries in a single operational view.</p>
-            <a class="text-link" href="#contact">Request Demo</a>
+            <button class="text-link demo-watch-button" type="button" data-staff-demo-open>Watch Demo</button>
           </article>
           <article class="demo-card reveal">
             <div class="mini-ui sales-ui" aria-hidden="true"><span></span><span></span><span></span><div></div></div>
@@ -351,6 +353,14 @@
     </div>
   </aside>
 
+  <div class="video-modal" data-staff-demo-modal hidden aria-modal="true" role="dialog" aria-label="Staff Management Dashboard demo video">
+    <div class="video-modal__backdrop" data-staff-demo-close></div>
+    <div class="video-modal__panel">
+      <button class="video-modal__close" type="button" aria-label="Close demo video" data-staff-demo-close>×</button>
+      <video src="assets/videos/staff-management-demo.mp4" controls playsinline preload="metadata" data-staff-demo-player></video>
+    </div>
+  </div>
+
   <footer class="site-footer">
     <div class="container footer-grid footer-grid-premium">
       <div class="footer-brand-block">
@@ -385,6 +395,6 @@
     </div>
   </footer>
 
-  <script src="app.js?v=content-ui-upgrade"></script>
+  <script src="app.js?v=staff-demo-video"></script>
 </body>
 </html>
