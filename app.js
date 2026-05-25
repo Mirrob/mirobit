@@ -1,5 +1,5 @@
 const STATS_API_URL = "https://script.google.com/macros/s/AKfycbys5TdJTlSbQ7JI7hBmWVgebQvcWlos5uIk7X2X__PrKxD8eacIvk1nwZ7mv9eFbDua/exec";
-const WHATSAPP_NUMBER = "8801XXXXXXXXX";
+const WHATSAPP_NUMBER = "8801327224264";
 
 const header = document.querySelector("[data-header]");
 const menuToggle = document.querySelector("[data-menu-toggle]");
@@ -138,7 +138,11 @@ const translations = {
   "Chat on WhatsApp": "WhatsApp-এ কথা বলুন",
   "Email": "ইমেইল",
   "Office": "অফিস",
-  "Dhaka, Bangladesh": "ঢাকা, বাংলাদেশ",
+  "Phone/WhatsApp": "ফোন/WhatsApp",
+  "Islamia College Market, 3rd Floor, Lot 206–207, Kushtia, Bangladesh": "ইসলামিয়া কলেজ মার্কেট, ৩য় তলা, লট ২০৬–২০৭, কুষ্টিয়া, বাংলাদেশ",
+  "Phone/WhatsApp: +8801327224264": "ফোন/WhatsApp: +8801327224264",
+  "Email: mirobiit@gmail.com": "ইমেইল: mirobiit@gmail.com",
+  "Office: Islamia College Market, 3rd Floor, Lot 206–207, Kushtia, Bangladesh": "অফিস: ইসলামিয়া কলেজ মার্কেট, ৩য় তলা, লট ২০৬–২০৭, কুষ্টিয়া, বাংলাদেশ",
   "Full name": "পূর্ণ নাম",
   "Business name": "ব্যবসার নাম",
   "Phone or WhatsApp": "ফোন বা WhatsApp",
