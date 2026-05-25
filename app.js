@@ -8,8 +8,8 @@ const languageToggle = document.querySelector("[data-language-toggle]");
 const popup = document.querySelector("[data-whatsapp-popup]");
 const popupClose = document.querySelector("[data-popup-close]");
 const popupLater = document.querySelector("[data-popup-later]");
-const staffDemoModal = document.querySelector("[data-staff-demo-modal]");
-const staffDemoPlayer = document.querySelector("[data-staff-demo-player]");
+const demoModal = document.querySelector("[data-demo-modal]");
+const demoPlayer = document.querySelector("[data-demo-player]");
 const year = document.querySelector("[data-year]");
 const statTargets = {
   attendanceValue: document.querySelector('[data-stat="attendance-value"]'),
@@ -429,21 +429,26 @@ const showPopup = () => {
   sessionStorage.setItem("mirobit-popup-shown", "true");
 };
 
-const openStaffDemo = () => {
-  if (!staffDemoModal || !staffDemoPlayer) return;
-  staffDemoModal.hidden = false;
+const openDemoVideo = (event) => {
+  if (!demoModal || !demoPlayer) return;
+  const videoSource = event.currentTarget?.dataset.demoVideo;
+  if (videoSource && demoPlayer.getAttribute("src") !== videoSource) {
+    demoPlayer.setAttribute("src", videoSource);
+    demoPlayer.load();
+  }
+  demoModal.hidden = false;
   document.body.classList.add("is-video-modal-open");
-  staffDemoPlayer.currentTime = 0;
-  staffDemoPlayer.play().catch(() => {
+  demoPlayer.currentTime = 0;
+  demoPlayer.play().catch(() => {
     // Mobile browsers may require the user to press play after the modal opens.
   });
 };
 
-const closeStaffDemo = () => {
-  if (!staffDemoModal || !staffDemoPlayer) return;
-  staffDemoPlayer.pause();
-  staffDemoPlayer.currentTime = 0;
-  staffDemoModal.hidden = true;
+const closeDemoVideo = () => {
+  if (!demoModal || !demoPlayer) return;
+  demoPlayer.pause();
+  demoPlayer.currentTime = 0;
+  demoModal.hidden = true;
   document.body.classList.remove("is-video-modal-open");
 };
 
@@ -458,15 +463,15 @@ const maybeShowPopupOnScroll = () => {
 
 popupClose?.addEventListener("click", closePopup);
 popupLater?.addEventListener("click", closePopup);
-document.querySelectorAll("[data-staff-demo-open]").forEach((trigger) => {
-  trigger.addEventListener("click", openStaffDemo);
+document.querySelectorAll("[data-demo-video]").forEach((trigger) => {
+  trigger.addEventListener("click", openDemoVideo);
 });
-document.querySelectorAll("[data-staff-demo-close]").forEach((trigger) => {
-  trigger.addEventListener("click", closeStaffDemo);
+document.querySelectorAll("[data-demo-close]").forEach((trigger) => {
+  trigger.addEventListener("click", closeDemoVideo);
 });
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && staffDemoModal && !staffDemoModal.hidden) {
-    closeStaffDemo();
+  if (event.key === "Escape" && demoModal && !demoModal.hidden) {
+    closeDemoVideo();
   }
 });
 window.addEventListener("scroll", maybeShowPopupOnScroll, { passive: true });

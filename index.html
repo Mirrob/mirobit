@@ -182,18 +182,20 @@
         </div>
         <div class="demo-grid">
           <article class="demo-card reveal">
-            <button class="demo-video-preview" type="button" data-staff-demo-open aria-label="Watch Staff Management Dashboard demo">
+            <button class="demo-video-preview" type="button" data-staff-demo-open data-demo-video="assets/videos/staff-management-demo.mp4" aria-label="Watch Staff Management Dashboard demo">
               <video src="assets/videos/staff-management-demo.mp4" muted autoplay loop playsinline preload="metadata"></video>
             </button>
             <h3>Staff Management Dashboard</h3>
             <p>Attendance, KPIs, tasks, approvals, and manager summaries in a single operational view.</p>
-            <button class="text-link demo-watch-button" type="button" data-staff-demo-open>Watch Demo</button>
+            <button class="text-link demo-watch-button" type="button" data-staff-demo-open data-demo-video="assets/videos/staff-management-demo.mp4">Watch Demo</button>
           </article>
           <article class="demo-card reveal">
-            <div class="mini-ui sales-ui" aria-hidden="true"><span></span><span></span><span></span><div></div></div>
+            <button class="demo-video-preview" type="button" data-demo-video="assets/videos/restaurant-sales-inventory-demo.mp4" aria-label="Watch Restaurant Sales & Inventory Dashboard demo">
+              <video src="assets/videos/restaurant-sales-inventory-demo.mp4" muted autoplay loop playsinline preload="metadata"></video>
+            </button>
             <h3>Restaurant Sales & Inventory Dashboard</h3>
             <p>Daily sales, item performance, stock movement, purchase alerts, and branch-level reports.</p>
-            <a class="text-link" href="#contact">Request Demo</a>
+            <button class="text-link demo-watch-button" type="button" data-demo-video="assets/videos/restaurant-sales-inventory-demo.mp4">Watch Demo</button>
           </article>
           <article class="demo-card reveal">
             <div class="mini-ui lead-ui" aria-hidden="true"><span></span><span></span><span></span><div></div></div>
@@ -353,11 +355,11 @@
     </div>
   </aside>
 
-  <div class="video-modal" data-staff-demo-modal hidden aria-modal="true" role="dialog" aria-label="Staff Management Dashboard demo video">
-    <div class="video-modal__backdrop" data-staff-demo-close></div>
+  <div class="video-modal" data-staff-demo-modal data-demo-modal hidden aria-modal="true" role="dialog" aria-label="Demo video player">
+    <div class="video-modal__backdrop" data-staff-demo-close data-demo-close></div>
     <div class="video-modal__panel">
-      <button class="video-modal__close" type="button" aria-label="Close demo video" data-staff-demo-close>×</button>
-      <video src="assets/videos/staff-management-demo.mp4" controls playsinline preload="metadata" data-staff-demo-player></video>
+      <button class="video-modal__close" type="button" aria-label="Close demo video" data-staff-demo-close data-demo-close>×</button>
+      <video src="assets/videos/staff-management-demo.mp4" controls playsinline preload="metadata" data-staff-demo-player data-demo-player></video>
     </div>
   </div>
 
@@ -395,6 +397,6 @@
     </div>
   </footer>
 
-  <script src="app.js?v=staff-demo-video"></script>
+  <script src="app.js?v=restaurant-demo-video"></script>
 </body>
 </html>
