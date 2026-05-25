@@ -204,6 +204,13 @@ Object.assign(translations, {
 
 Object.assign(translations, {
   "Packages": "প্যাকেজ",
+  "Founder-led support": "ফাউন্ডার-নেতৃত্বাধীন সাপোর্ট",
+  "Meet the people behind MIROBIT": "MIROBIT এর পেছনের মানুষগুলো",
+  "Founder-led automation and operational solutions for modern businesses.": "আধুনিক ব্যবসার জন্য ফাউন্ডার-নেতৃত্বাধীন অটোমেশন ও অপারেশনাল সল্যুশন।",
+  "Founder & CEO": "প্রতিষ্ঠাতা ও সিইও",
+  "Focused on business automation, operational systems, and scalable digital solutions for Bangladesh businesses.": "বাংলাদেশি ব্যবসার জন্য অটোমেশন, অপারেশনাল সিস্টেম এবং স্কেলেবল ডিজিটাল সল্যুশন নিয়ে কাজ করছেন।",
+  "Co-Founder & Operations Lead": "সহ-প্রতিষ্ঠাতা ও অপারেশনস লিড",
+  "Focused on operations management, client coordination, and implementation support for business systems.": "অপারেশন ম্যানেজমেন্ট, ক্লায়েন্ট কো-অর্ডিনেশন এবং বিজনেস সিস্টেম ইমপ্লিমেন্টেশন সাপোর্ট নিয়ে কাজ করছেন।",
   "Website Design & Digital Presence": "ওয়েবসাইট ডিজাইন ও ডিজিটাল উপস্থিতি",
   "We design clean, mobile-friendly business websites based on customer needs, budget, and future growth plans.": "গ্রাহকের প্রয়োজন, বাজেট ও ভবিষ্যৎ পরিকল্পনা অনুযায়ী আমরা সুন্দর, মোবাইল-ফ্রেন্ডলি ব্যবসায়িক ওয়েবসাইট তৈরি করি।",
   "Starter Packages for Bangladesh Businesses": "বাংলাদেশি ব্যবসার জন্য শুরু করার প্যাকেজ",
