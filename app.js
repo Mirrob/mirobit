@@ -10,6 +10,7 @@ const popupClose = document.querySelector("[data-popup-close]");
 const popupLater = document.querySelector("[data-popup-later]");
 const demoModal = document.querySelector("[data-demo-modal]");
 const demoPlayer = document.querySelector("[data-demo-player]");
+const journeySteps = [...document.querySelectorAll("[data-journey-step]")];
 const year = document.querySelector("[data-year]");
 const statTargets = {
   attendanceValue: document.querySelector('[data-stat="attendance-value"]'),
@@ -214,12 +215,19 @@ Object.assign(translations, {
   "Client journey": "ক্লায়েন্ট জার্নি",
   "How we deliver your system": "আমরা কীভাবে আপনার সিস্টেম তৈরি করি",
   "A clear step-by-step process from understanding your business to launching a working automation system.": "আপনার ব্যবসা বোঝা থেকে শুরু করে কার্যকর অটোমেশন সিস্টেম চালু করা পর্যন্ত একটি পরিষ্কার ধাপভিত্তিক প্রক্রিয়া।",
+  "Click to view details": "বিস্তারিত দেখতে ক্লিক করুন",
   "Consultation": "পরামর্শ",
+  "We understand your business, current problems, and the result you want.": "আপনার ব্যবসা, বর্তমান সমস্যা এবং কাঙ্ক্ষিত ফলাফল বুঝে নিই।",
   "Workflow Mapping": "কাজের প্রক্রিয়া বোঝা",
+  "We map your daily process, staff roles, approvals, and reporting needs.": "দৈনন্দিন কাজ, স্টাফের ভূমিকা, অনুমোদন এবং রিপোর্টিং চাহিদা ম্যাপ করি।",
   "Demo Preview": "ডেমো প্রিভিউ",
+  "We show a simple preview so you can confirm the system direction.": "সিস্টেমের দিক ঠিক আছে কিনা নিশ্চিত করতে একটি সহজ প্রিভিউ দেখাই।",
   "System Build": "সিস্টেম তৈরি",
+  "We build dashboards, forms, automation, reports, and access roles.": "ড্যাশবোর্ড, ফর্ম, অটোমেশন, রিপোর্ট এবং অ্যাক্সেস রোল তৈরি করি।",
   "Training": "ট্রেনিং",
+  "We train owners, managers, and staff to use the system properly.": "মালিক, ম্যানেজার এবং স্টাফদের সিস্টেম ব্যবহারের ট্রেনিং দিই।",
   "Support": "সাপোর্ট",
+  "We help after launch with fixes, updates, and improvements.": "লঞ্চের পর ফিক্স, আপডেট এবং উন্নতিতে সহায়তা করি।",
   "Use cases": "ব্যবহারিক উদাহরণ",
   "Real business use cases": "বাস্তব ব্যবসায়িক ব্যবহার",
   "Practical automation examples that help owners, managers, and teams work faster.": "মালিক, ম্যানেজার এবং টিমকে দ্রুত কাজ করতে সাহায্য করে এমন বাস্তব অটোমেশন উদাহরণ।",
@@ -501,8 +509,24 @@ const maybeShowPopupOnScroll = () => {
   }
 };
 
+const activateJourneyStep = (selectedStep) => {
+  journeySteps.forEach((step) => {
+    const isActive = step === selectedStep;
+    step.classList.toggle("is-active", isActive);
+    step.setAttribute("aria-expanded", String(isActive));
+  });
+};
+
 popupClose?.addEventListener("click", closePopup);
 popupLater?.addEventListener("click", closePopup);
+journeySteps.forEach((step) => {
+  step.addEventListener("click", () => activateJourneyStep(step));
+  step.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    event.preventDefault();
+    activateJourneyStep(step);
+  });
+});
 document.addEventListener("click", (event) => {
   const trigger = event.target.closest?.("[data-demo-video]");
   if (trigger) {

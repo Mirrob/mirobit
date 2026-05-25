@@ -2037,10 +2037,26 @@ li,
 
 .solution-card p,
 .demo-card p,
+.journey-detail,
 .use-case-card p,
 .package-card p,
 .package-card li {
   line-height: 1.72;
+}
+
+.seo-panel p,
+.footer-brand-block p {
+  max-width: 680px;
+  line-height: 1.72;
+}
+
+.trust-row {
+  align-items: center;
+}
+
+.trust-row span {
+  line-height: 1.32;
+  text-wrap: balance;
 }
 
 .journey-section {
@@ -2076,8 +2092,19 @@ li,
 }
 
 .journey-flow li {
-  min-height: 158px;
+  min-height: 228px;
   padding: 22px 18px;
+}
+
+.journey-step {
+  cursor: pointer;
+}
+
+.journey-step:focus-visible,
+.demo-video-preview:focus-visible,
+.demo-watch-button:focus-visible {
+  outline: 3px solid rgba(30, 200, 255, 0.34);
+  outline-offset: 4px;
 }
 
 .journey-flow li::before,
@@ -2111,6 +2138,38 @@ li,
   font-size: 1rem;
 }
 
+.journey-detail {
+  max-height: 0;
+  margin: 0;
+  overflow: hidden;
+  color: var(--muted);
+  opacity: 0;
+  transition: max-height 0.22s ease, margin-top 0.22s ease, opacity 0.22s ease;
+}
+
+.journey-step.is-active {
+  border-color: rgba(30, 200, 255, 0.46);
+  box-shadow: 0 24px 60px rgba(11, 31, 51, 0.12), 0 0 26px rgba(30, 200, 255, 0.14);
+}
+
+.journey-step.is-active .journey-detail {
+  max-height: 110px;
+  margin-top: 14px;
+  opacity: 1;
+}
+
+.journey-hint {
+  display: inline-flex;
+  margin: 6px 0 0;
+  padding: 7px 10px;
+  border: 1px solid rgba(30, 200, 255, 0.22);
+  border-radius: 999px;
+  color: #0b6684;
+  background: rgba(30, 200, 255, 0.08);
+  font-size: 0.84rem;
+  font-weight: 800;
+}
+
 .journey-flow li:hover,
 .use-case-card:hover {
   transform: translateY(-4px);
@@ -2125,6 +2184,8 @@ li,
 }
 
 .use-case-card {
+  display: flex;
+  flex-direction: column;
   padding: 24px;
 }
 
@@ -2133,6 +2194,7 @@ li,
 }
 
 .use-case-card p {
+  max-width: 28rem;
   margin-bottom: 0;
   color: var(--muted);
 }
@@ -2151,8 +2213,16 @@ li,
   .hero-subtitle,
   .section-heading p:not(.eyebrow),
   .contact-copy > p:not(.eyebrow):not(.consultation-note) {
-    max-width: 34rem;
+    max-width: 32rem;
     line-height: 1.68;
+  }
+
+  .trust-row {
+    gap: 8px;
+  }
+
+  .trust-row span {
+    padding: 8px 10px;
   }
 
   .journey-flow,
@@ -2163,5 +2233,17 @@ li,
   .journey-flow li,
   .use-case-card {
     padding: 22px;
+  }
+
+  .journey-flow li {
+    min-height: 0;
+  }
+
+  .journey-step {
+    touch-action: manipulation;
+  }
+
+  .journey-detail {
+    line-height: 1.66;
   }
 }
