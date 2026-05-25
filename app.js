@@ -474,8 +474,11 @@ const maybeShowPopupOnScroll = () => {
 
 popupClose?.addEventListener("click", closePopup);
 popupLater?.addEventListener("click", closePopup);
-document.querySelectorAll("[data-demo-video]").forEach((trigger) => {
-  trigger.addEventListener("click", openDemoVideo);
+document.addEventListener("click", (event) => {
+  const trigger = event.target.closest?.("[data-demo-video]");
+  if (trigger) {
+    openDemoVideo({ currentTarget: trigger });
+  }
 });
 document.querySelectorAll("[data-demo-close]").forEach((trigger) => {
   trigger.addEventListener("click", closeDemoVideo);
