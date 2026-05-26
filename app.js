@@ -209,6 +209,8 @@ Object.assign(translations, {
   "Custom-built systems": "কাস্টম-বিল্ট সিস্টেম",
   "Training included": "ট্রেনিং অন্তর্ভুক্ত",
   "Interactive system previews": "ইন্টারঅ্যাকটিভ সিস্টেম প্রিভিউ",
+  "Visit our office": "আমাদের অফিসে আসুন",
+  "Open in Google Maps": "Google Maps-এ দেখুন",
   "Who MIROBIT is built for": "MIROBIT কার জন্য তৈরি",
   "Dealers & distributors": "ডিলার ও ডিস্ট্রিবিউটর",
   "Offices": "অফিস",
