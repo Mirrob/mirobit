@@ -2639,3 +2639,65 @@ li,
     min-height: 112px;
   }
 }
+
+/* Safe mobile text polish: let card copy use the available screen width cleanly */
+@media (max-width: 768px) {
+  .problem-card,
+  .solution-card,
+  .use-case-card,
+  .journey-step,
+  .demo-card,
+  .package-card,
+  .contact-copy,
+  .seo-content {
+    width: 100%;
+  }
+
+  .problem-card,
+  .solution-card,
+  .use-case-card,
+  .journey-flow li,
+  .demo-card,
+  .package-card {
+    padding-right: clamp(18px, 5vw, 26px);
+    padding-left: clamp(18px, 5vw, 26px);
+  }
+
+  .problem-card h3,
+  .solution-card h3,
+  .use-case-card h3,
+  .journey-flow h3,
+  .demo-card h3,
+  .package-card h3,
+  .section-heading h2 {
+    max-width: none;
+    text-align: left;
+    text-wrap: balance;
+  }
+
+  .problem-card p,
+  .solution-card p,
+  .use-case-card p,
+  .journey-detail,
+  .demo-card p,
+  .package-card p,
+  .package-card li,
+  .contact-copy p,
+  .seo-content p,
+  .section-heading p {
+    max-width: none;
+    width: 100%;
+    text-align: left;
+    line-height: 1.64;
+    text-wrap: pretty;
+  }
+
+  .problem-grid,
+  .solution-grid,
+  .use-case-grid,
+  .journey-flow,
+  .demo-grid,
+  .package-grid {
+    align-items: stretch;
+  }
+}
